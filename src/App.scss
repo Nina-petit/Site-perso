@@ -7,11 +7,57 @@ h1, h2 {
 h1 {
   font-size: 48px;
   margin-bottom: 9px;
+  text-transform: uppercase;
 }
 
 h2 {
   font-size: 32px;
   margin-bottom: 29px;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+}
+
+.navbar {
+  height: 72;
+  top: 0;
+  right: 0;
+  left: 0;
+  position: absolute;
+  padding: 0 60px 0 140px;
+  align-items: center;
+
+  display: flex;
+
+  &__logo {
+    margin-right: auto;
+    color: #333745;
+    text-transform: uppercase;
+  }
+
+  &__links {
+    display: flex;
+    color:#fff;
+    align-items: center;
+
+    p {
+      margin-left: 30px;
+      text-shadow: 0px 1px 2px rgba(99, 101, 102, 0.7);
+    }
+  }
+
+  &__contact-button {
+    padding: 10px 20px;
+    margin: 15px 0px 15px 30px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+
+    p {
+      margin-left: 0;
+    }
+  }
 }
 
 .hero-section {
@@ -89,6 +135,7 @@ h2 {
         display: flex;
         margin-left: 28px;
         padding: 16px 28px 16px 32px;
+        border-width: 0px;
 
         p {
           color: #5b678c;

@@ -6,10 +6,21 @@ import './App.scss';
 function App() {
   return (
     <div className="App">
+      <div className="navbar">
+        <p className="navbar__logo">NINA <span style={{fontWeight: "800"}}>PETIT</span></p>
+        <div className="navbar__links">
+          <p>Accueil</p>
+          <p>Compétences</p>
+          <p>Projet personnel</p>
+          <div className="navbar__contact-button">
+            <p>Contactez-moi</p>
+          </div>
+        </div>
+      </div>
       <div className="hero-section">
         <div className="hero-section__left">
           <div className="hero-section__info">
-            <h1>NINA <span style={{fontWeight: "800"}}>PETIT</span></h1>
+            <h1>Nina <span style={{fontWeight: "800"}}>Petit</span></h1>
             <h2>Développeuse web et mobile</h2>
             <p className="hero-section__info__presentation">
               Je suis passionnée par le développement de sites web et
@@ -17,16 +28,16 @@ function App() {
               CDI en full remote.
             </p>
             <div className="hero-section__info__buttons">
-              <div className="hero-section__info__buttons__contact">
+              <button className="hero-section__info__buttons__contact">
                 <p>Contactez-moi</p>
                 <BubbleIcon className="hero-section__info__buttons__contact__icon"/>
-              </div>
-              <div className="hero-section__info__buttons__cv">
+              </button>
+              <button className="hero-section__info__buttons__cv">
                 <p>
                   Ouvrir mon CV
                 </p>
                 <OpenIcon className="hero-section__info__buttons__cv__icon"/>
-              </div>
+              </button>
             </div>
           </div>
         </div>
