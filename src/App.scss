@@ -1,4 +1,4 @@
-h1, h2 {
+h1, h2, h3, h4, h5, h6, span {
   color: #333745;
   font-weight: 400;
   margin: 0;
@@ -13,6 +13,31 @@ h1 {
 h2 {
   font-size: 32px;
   margin-bottom: 29px;
+}
+
+h3 {
+  font-size: 48px;
+  width: 360px;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+h4 {
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+h5 {
+  font-size: 16px;
+  text-transform: uppercase;
+  text-decoration: underline;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+h6 {
+  font-size: 18px;
+  margin-bottom: 5px;
 }
 
 button {
@@ -154,5 +179,123 @@ button {
   &__img {
     width: 50%;
     object-fit: cover;
+  }
+}
+
+.skills-education {
+  height: 130vh;
+  padding: 70px 140px;
+  background-color: #E5EDF9;
+  display: flex;
+  flex-direction: row;
+}
+
+.skills {
+  &__technologies {
+    display: flex;
+    flex-wrap: wrap;
+    width: 600px;
+
+    &__technology {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-right: 30px;
+      margin-bottom: 30px;
+
+      span {
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
+
+.education {
+  &__content {
+    display: flex;
+    position: relative;
+  }
+
+  &__line {
+    height: 100%;
+    width: 1;
+    border-right: 1px solid #B9BBC4;
+    position: absolute;
+  }
+
+  &__boxes {
+    margin-left: 35px;
+  }
+
+  &__box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 42px;
+
+    &__card {
+      width: 544px;
+      background-color: #fff;
+      border-radius: 32px;
+      box-shadow: inset 16px 16px 32px #EEF0FB, inset -8px -8px 16px rgba(138, 149, 227, 0.33);
+      z-index: 2;
+      padding: 30px 40px;
+
+      &__info {
+        display: flex;
+        margin-bottom: 20px;
+        align-items: center;
+
+        &__date {
+          color: #656978;
+          margin-right: 20px;
+        }
+
+        &__school {
+          color: #4F535E;
+          text-transform: uppercase;
+          font-weight: 600;
+          font-size: 18px;
+          margin-right: 10px;
+        }
+      }
+
+      p {
+        font-size: 18px;
+        line-height: 163%;
+        margin-bottom: 12px;
+      }
+
+      &__technologies {
+        display: flex;
+      }
+    }
+
+    &__shadow {
+      width: 446px;
+      height: 77px;
+      background: rgba(161, 171, 234, 0.4);
+      filter: blur(25px);
+      border-radius: 150px;
+      position: relative;
+      top: -65px;
+      margin-bottom: -65px;
+      z-index: 1;
+    }
+  }
+}
+
+.technology {
+  //transform: scale(0.5);
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  margin-right: 12px;
+
+  svg {
+    transform: scale(0.4);
+    transform-origin: left top;
   }
 }
