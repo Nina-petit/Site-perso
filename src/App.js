@@ -1,5 +1,12 @@
 //#region Imports
+  import React, { useState } from 'react';
+
   import header_picture from './assets/hero_picture.JPG';
+  import ui from './assets/ui.png';
+  import high_fidelity from './assets/high_fidelity.png';
+  import seo from './assets/seo.png';
+  import xd from './assets/xd.png';
+  import web_design from './assets/web_design.png';
   import { ReactComponent as BubbleIcon } from './assets/icons/bubble.svg';
   import { ReactComponent as OpenIcon } from './assets/icons/open.svg';
   import { ReactComponent as CssIcon} from './assets/icons/css.svg';
@@ -81,7 +88,33 @@ function App() {
       {name: "Allemand", description: "Niveau C1, Abibac", icon: <GermanyIcon className="language__icon"/>}
     ];
 
+    const courses = [
+      {
+        id: 1,
+        name: "UI in Mobile Apps",
+        author: "Michal Malewicz",
+        description: "Apprendre à designer une application mobile fonctionnelle, Choisir les bonnes polices et couleurs, Détecter et résoudre les problèmes les plus communs dans le design d’applications mobiles, Créer des blockframes et utiliser la méthode du carré rouge pour aligner le contenu",
+        picture: ui
+      },
+      {
+        id: 2,
+        name: "test1",
+        author: "Michal",
+        description: "test",
+        picture: high_fidelity
+      },
+      {
+        id: 3,
+        name: "test2",
+        author: "Michal",
+        description: "test",
+        picture: seo
+      },
+    ]
+
   //#endregion
+
+  const [selectedCourseId, setSelectedCourseId] = useState(1);
 
   return (
     <div className="App">
@@ -101,7 +134,7 @@ function App() {
         //#endregion
       }
       {
-      //#region Hero section
+        //#region Hero section
         <div className="hero-section">
           <div className="hero-section__left">
             <div className="hero-section__info">
@@ -128,7 +161,7 @@ function App() {
           </div>
           <img src={header_picture} alt="me" className="hero-section__img" />
         </div>
-      //#endregion
+        //#endregion
       }
       {
         //#region Skills
@@ -194,43 +227,78 @@ function App() {
           </div>
         //#endregion
       }
-        <div className="other">
-          <div className="certificate">
-            <h3>Certification</h3>
-            <div className="opquast__header">
-              <OpquastIcon className="opquast__header__icon"/>
-              <div>
-                <h6>Maîtrise de la qualité en projet web</h6>
-                <span className="opquast__header__school">Opquast</span>
-              </div>
-            </div>
-            <div className="opquast__mention">
-              <span className="opquast__mention__text">Mention Avancé <span style={{fontWeight: 600}}>(825/100)</span></span>
-              <StarIcon/>
-              <StarIcon/>
-              <StarIcon/>
-              <StarIcon/>
-            </div>
-            {opquast_skills.map(skill =>
-              <div className="opquast__skill">
-                <CheckIcon className="opquast__skill__check"/>
-                <p>{skill}</p>
-              </div>
-            )}
-          </div>
-          <div>
-            <h3>Langues</h3>
-            {languages.map(language =>
-              <div className="language">
-                {language.icon}
+      {
+        //#region Certificate and languages
+        <div className="certificate-languages">
+          {
+            //#region Certificate
+            <div className="certificate">
+              <h3>Certification</h3>
+              <div className="opquast__header">
+                <OpquastIcon className="opquast__header__icon"/>
                 <div>
-                  <h6>{language.name}</h6>
-                  <span>{language.description}</span>
+                  <h6>Maîtrise de la qualité en projet web</h6>
+                  <span className="opquast__header__school">Opquast</span>
                 </div>
               </div>
-            )}
-          </div>
+              <div className="opquast__mention">
+                <span className="opquast__mention__text">Mention Avancé <span style={{fontWeight: 600}}>(825/100)</span></span>
+                <StarIcon/>
+                <StarIcon/>
+                <StarIcon/>
+                <StarIcon/>
+              </div>
+              {opquast_skills.map(skill =>
+                <div className="opquast__skill">
+                  <CheckIcon className="opquast__skill__check"/>
+                  <p>{skill}</p>
+                </div>
+              )}
+            </div>
+            //#endregion
+          }
+          {
+            //#region Languages
+            <div>
+              <h3>Langues</h3>
+              {languages.map(language =>
+                <div className="language">
+                  {language.icon}
+                  <div>
+                    <h6>{language.name}</h6>
+                    <span>{language.description}</span>
+                  </div>
+                </div>
+              )}
+            </div>
+            //#endregion
+          }
         </div>
+        //#endregion
+      }
+      <div className="courses">
+        <h3>Cours suivis</h3>
+        <div className="courses__list">
+          {courses.map(course =>
+            <div 
+            className={"course__box" + (course.id === selectedCourseId ? " current_course" : course.id === selectedCourseId + 1 ? " next_course" : ((course.id === selectedCourseId - 1) || (selectedCourseId === 1 && course.id === 3)) ? " previous_course" : null)}
+            >
+              <img
+                src={course.picture}
+                alt="picture"
+                className={"course__picture" + (course.id === selectedCourseId ? " current_course__picture" : course.id === selectedCourseId + 1 ? " next_course__picture" : ((course.id === selectedCourseId - 1) || (selectedCourseId === 1 && course.id === 3)) ? " previous_course__picture" : null)}
+              />
+              <div className="course__box__shadow"/>
+              {course.id === selectedCourseId &&
+                <>
+                  <div className="course__box__side-shadow course__box__side-shadow__right"/>
+                  <div className="course__box__side-shadow course__box__side-shadow__left"/>
+                </>
+              }
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 }

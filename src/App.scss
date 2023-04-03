@@ -190,7 +190,6 @@
 
 //#region Skills and education
   .skills-education {
-    height: 110vh;
     padding: 70px 140px;
     background-color: #E5EDF9;
     display: flex;
@@ -310,10 +309,8 @@
   }
 //#endregion
 
-.other {
-  height: 130vh;
+.certificate-languages {
   padding: 90px 140px;
-  background-color: #fff;
   display: flex;
   flex-direction: row;
 }
@@ -390,5 +387,89 @@
 
   span {
     font-size: 18px;
+  }
+}
+
+.courses {
+  padding: 10px 140px;
+
+  &__list {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-bottom: 200px;
+  }
+}
+
+.course {
+  &__picture {
+    border-radius: 32px;
+  }
+
+  &__box {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.current_course .course__box__shadow {
+    width: 518px;
+    height: 127px;
+    background: rgba(161, 171, 234, 0.4);
+    filter: blur(25px);
+    border-radius: 150px;
+    position: absolute;
+    bottom: -40px;
+    z-index: -2;
+}
+
+.previous_course, .next_course {
+  position: absolute;
+  z-index: -2;
+
+  &__picture {
+    width: 500px;
+    height: 280px;
+  }
+}
+
+.previous_course .course__box__shadow, .next_course .course__box__shadow {
+    width: 414px;
+    height: 127px;
+    background: rgba(161, 171, 234, 0.4);
+    filter: blur(25px);
+    border-radius: 150px;
+    position: absolute;
+    bottom: 0px;
+    z-index: -3;
+}
+
+.previous_course {
+  left: 50px;
+}
+
+.next_course {
+  right: 50px;
+}
+
+.course__box__side-shadow {
+  width: 127px;
+  height: 280px;
+  background: rgba(105, 108, 133, 0.5);
+  filter: blur(15px);
+  border-radius: 150px;
+  position: absolute;
+  z-index: -1;
+
+  &__left {
+    left: -20px;
+  }
+
+  &__right {
+    right: -20px;
   }
 }
