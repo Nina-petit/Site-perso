@@ -1,66 +1,87 @@
-import header_picture from './assets/hero_picture.JPG';
-import { ReactComponent as BubbleIcon } from './assets/icons/bubble.svg';
-import { ReactComponent as OpenIcon } from './assets/icons/open.svg';
-import { ReactComponent as CssIcon} from './assets/icons/css.svg';
-import { ReactComponent as FigmaIcon} from './assets/icons/figma.svg';
-import { ReactComponent as GitIcon} from './assets/icons/git.svg';
-import { ReactComponent as GraphQLIcon} from './assets/icons/graphql.svg';
-import { ReactComponent as HtmlIcon} from './assets/icons/html.svg';
-import { ReactComponent as JavaScriptIcon} from './assets/icons/javascript.svg';
-import { ReactComponent as NodeJsIcon} from './assets/icons/nodejs.svg';
-import { ReactComponent as PostgreSQLIcon} from './assets/icons/postgresql.svg';
-import { ReactComponent as ReactNativeIcon} from './assets/icons/react-native.svg';
-import { ReactComponent as ReduxIcon} from './assets/icons/redux.svg';
-import { ReactComponent as SassIcon} from './assets/icons/sass.svg';
-import { ReactComponent as TypeScriptIcon} from './assets/icons/typescript.svg';
-import { ReactComponent as OclockIcon} from './assets/icons/oclock.svg';
-import { ReactComponent as SkemaIcon} from './assets/icons/skema.svg';
+//#region Imports
+  import header_picture from './assets/hero_picture.JPG';
+  import { ReactComponent as BubbleIcon } from './assets/icons/bubble.svg';
+  import { ReactComponent as OpenIcon } from './assets/icons/open.svg';
+  import { ReactComponent as CssIcon} from './assets/icons/css.svg';
+  import { ReactComponent as FigmaIcon} from './assets/icons/figma.svg';
+  import { ReactComponent as GitIcon} from './assets/icons/git.svg';
+  import { ReactComponent as GraphQLIcon} from './assets/icons/graphql.svg';
+  import { ReactComponent as HtmlIcon} from './assets/icons/html.svg';
+  import { ReactComponent as JavaScriptIcon} from './assets/icons/javascript.svg';
+  import { ReactComponent as NodeJsIcon} from './assets/icons/nodejs.svg';
+  import { ReactComponent as PostgreSQLIcon} from './assets/icons/postgresql.svg';
+  import { ReactComponent as ReactNativeIcon} from './assets/icons/react-native.svg';
+  import { ReactComponent as ReduxIcon} from './assets/icons/redux.svg';
+  import { ReactComponent as SassIcon} from './assets/icons/sass.svg';
+  import { ReactComponent as TypeScriptIcon} from './assets/icons/typescript.svg';
+  import { ReactComponent as OclockIcon} from './assets/icons/oclock.svg';
+  import { ReactComponent as SkemaIcon} from './assets/icons/skema.svg';
+  import { ReactComponent as OpquastIcon} from './assets/icons/opquast.svg';
+  import { ReactComponent as StarIcon} from './assets/icons/star.svg';
+  import { ReactComponent as CheckIcon} from './assets/icons/check.svg';
+  import { ReactComponent as UsaIcon} from './assets/icons/usa.svg';
+  import { ReactComponent as GermanyIcon} from './assets/icons/germany.svg';
 
-import './App.scss';
+  import './App.scss';
+//#endregion
 
 function App() {
-  const technologies = {
-    experimented: [
-      {id: 1, name: 'React Native', icon: <ReactNativeIcon/>},
-      {id: 2, name: 'React.js', icon: <ReactNativeIcon/>},
-      {id: 3, name: 'GraphQL', icon: <GraphQLIcon/>},
-      {id: 4, name: 'CSS', icon: <CssIcon/>},
-      {id: 5, name: 'PostgreSQL', icon: <PostgreSQLIcon/>},
-      {id: 6, name: 'TypeScript', icon: <TypeScriptIcon/>},
-      {id: 7, name: 'JavaScript', icon: <JavaScriptIcon/>},
-      {id: 8, name: 'Figma', icon: <FigmaIcon/>}
-    ],
-    familiar: [
-      {id: 1, name: 'HTML', icon: <HtmlIcon/>},
-      {id: 2, name: 'Node.js', icon: <NodeJsIcon/>},
-      {id: 3, name: 'Redux', icon: <ReduxIcon/>},
-      {id: 4, name: 'Sass', icon: <SassIcon/>},
-      {id: 5, name: 'Git', icon: <GitIcon/>}
+  //#region Arrays
+    const technologies = {
+      experimented: [
+        {id: 1, name: 'React Native', icon: <ReactNativeIcon/>},
+        {id: 2, name: 'React.js', icon: <ReactNativeIcon/>},
+        {id: 3, name: 'GraphQL', icon: <GraphQLIcon/>},
+        {id: 4, name: 'CSS', icon: <CssIcon/>},
+        {id: 5, name: 'PostgreSQL', icon: <PostgreSQLIcon/>},
+        {id: 6, name: 'TypeScript', icon: <TypeScriptIcon/>},
+        {id: 7, name: 'JavaScript', icon: <JavaScriptIcon/>},
+        {id: 8, name: 'Figma', icon: <FigmaIcon/>}
+      ],
+      familiar: [
+        {id: 1, name: 'HTML', icon: <HtmlIcon/>},
+        {id: 2, name: 'Node.js', icon: <NodeJsIcon/>},
+        {id: 3, name: 'Redux', icon: <ReduxIcon/>},
+        {id: 4, name: 'Sass', icon: <SassIcon/>},
+        {id: 5, name: 'Git', icon: <GitIcon/>}
+      ]
+    };
+
+    const oclock_technologies = [<HtmlIcon/>, <CssIcon/>, <JavaScriptIcon/>, <NodeJsIcon/>, <PostgreSQLIcon/>, <ReactNativeIcon/>];
+
+    const education = [
+      {
+        title: "Formation Développeur Web Fullstack JavaScript",
+        date: "Janvier - juillet 2021",
+        school: "O'Clock",
+        description: "Titre professionnel Développeur Web et Web Mobile de niveau 5 correspondant à un Bac +2.",
+      },
+      {
+        title: "Bac +3 en école de commerce",
+        date: "2017-2021",
+        school: "SKEMA",
+        description: "2 ans de classe préparatoire économique (ECE) au Lycée Gaston Berger, Lille (59), 1 an à SKEMA dans le programme Grande École à Sophia Antipolis (06)",
+      },
+      {
+        title: "Baccalauréat littéraire mention très bien",
+        date: "2017",
+        school: "Lycée Darchicourt, Hénin Beaumont (62)",
+        description: "Abibac (baccalauréat français et allemand) avec une note de 1.0 (équivaut à 20/20)",
+      },
     ]
-  };
 
-  const oclock_technologies = [<HtmlIcon/>, <CssIcon/>, <JavaScriptIcon/>, <NodeJsIcon/>, <PostgreSQLIcon/>, <ReactNativeIcon/>];
+    const opquast_skills = [
+      "Connaître les bonnes pratiques, leur conception et utilisation",
+      "Prendre en compte la diversité et les exigences des utilisateurs",
+      "Prévenir les risques, renforcer l'assurance qualité Web"
+    ];
 
-  const education = [
-    {
-      title: "Formation Développeur Web Fullstack JavaScript",
-      date: "Janvier - juillet 2021",
-      school: "O'Clock",
-      description: "Titre professionnel Développeur Web et Web Mobile de niveau 5 correspondant à un Bac +2.",
-    },
-    {
-      title: "Bac +3 en école de commerce",
-      date: "2017-2021",
-      school: "SKEMA",
-      description: "2 ans de classe préparatoire économique (ECE) au Lycée Gaston Berger, Lille (59), 1 an à SKEMA dans le programme Grande École à Sophia Antipolis (06)",
-    },
-    {
-      title: "Baccalauréat littéraire mention très bien",
-      date: "2017",
-      school: "Lycée Darchicourt, Hénin Beaumont (62)",
-      description: "Abibac (baccalauréat français et allemand) avec une note de 1.0 (équivaut à 20/20)",
-    },
-  ]
+    const languages = [
+      {name: "Anglais", description: "TOEFL ITP 645/677", icon: <UsaIcon className="language__icon"/>},
+      {name: "Allemand", description: "Niveau C1, Abibac", icon: <GermanyIcon className="language__icon"/>}
+    ];
+
+  //#endregion
 
   return (
     <div className="App">
@@ -173,6 +194,43 @@ function App() {
           </div>
         //#endregion
       }
+        <div className="other">
+          <div className="certificate">
+            <h3>Certification</h3>
+            <div className="opquast__header">
+              <OpquastIcon className="opquast__header__icon"/>
+              <div>
+                <h6>Maîtrise de la qualité en projet web</h6>
+                <span className="opquast__header__school">Opquast</span>
+              </div>
+            </div>
+            <div className="opquast__mention">
+              <span className="opquast__mention__text">Mention Avancé <span style={{fontWeight: 600}}>(825/100)</span></span>
+              <StarIcon/>
+              <StarIcon/>
+              <StarIcon/>
+              <StarIcon/>
+            </div>
+            {opquast_skills.map(skill =>
+              <div className="opquast__skill">
+                <CheckIcon className="opquast__skill__check"/>
+                <p>{skill}</p>
+              </div>
+            )}
+          </div>
+          <div>
+            <h3>Langues</h3>
+            {languages.map(language =>
+              <div className="language">
+                {language.icon}
+                <div>
+                  <h6>{language.name}</h6>
+                  <span>{language.description}</span>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
     </div>
   );
 }
