@@ -1,35 +1,14 @@
 //#region Imports
   import React, { useState } from 'react';
 
+  import { BubbleIcon, OpenIcon, CssIcon, FigmaIcon, GitIcon, GraphQLIcon, HtmlIcon, JavaScriptIcon, NodeJsIcon, PostgreSQLIcon, ReactNativeIcon, ReduxIcon, SassIcon, TypeScriptIcon, OclockIcon, SkemaIcon, OpquastIcon, StarIcon, CheckIcon, UsaIcon, GermanyIcon, ChevronLeftIcon, ChevronRightIcon, } from './assets/icons';
   import header_picture from './assets/hero_picture.JPG';
+  import CV from './assets/CV.pdf';
   import ui from './assets/ui.png';
   import high_fidelity from './assets/high_fidelity.png';
   import seo from './assets/seo.png';
   import xd from './assets/xd.png';
   import web_design from './assets/web_design.png';
-  import { ReactComponent as BubbleIcon } from './assets/icons/bubble.svg';
-  import { ReactComponent as OpenIcon } from './assets/icons/open.svg';
-  import { ReactComponent as CssIcon} from './assets/icons/css.svg';
-  import { ReactComponent as FigmaIcon} from './assets/icons/figma.svg';
-  import { ReactComponent as GitIcon} from './assets/icons/git.svg';
-  import { ReactComponent as GraphQLIcon} from './assets/icons/graphql.svg';
-  import { ReactComponent as HtmlIcon} from './assets/icons/html.svg';
-  import { ReactComponent as JavaScriptIcon} from './assets/icons/javascript.svg';
-  import { ReactComponent as NodeJsIcon} from './assets/icons/nodejs.svg';
-  import { ReactComponent as PostgreSQLIcon} from './assets/icons/postgresql.svg';
-  import { ReactComponent as ReactNativeIcon} from './assets/icons/react-native.svg';
-  import { ReactComponent as ReduxIcon} from './assets/icons/redux.svg';
-  import { ReactComponent as SassIcon} from './assets/icons/sass.svg';
-  import { ReactComponent as TypeScriptIcon} from './assets/icons/typescript.svg';
-  import { ReactComponent as OclockIcon} from './assets/icons/oclock.svg';
-  import { ReactComponent as SkemaIcon} from './assets/icons/skema.svg';
-  import { ReactComponent as OpquastIcon} from './assets/icons/opquast.svg';
-  import { ReactComponent as StarIcon} from './assets/icons/star.svg';
-  import { ReactComponent as CheckIcon} from './assets/icons/check.svg';
-  import { ReactComponent as UsaIcon} from './assets/icons/usa.svg';
-  import { ReactComponent as GermanyIcon} from './assets/icons/germany.svg';
-  import { ReactComponent as ChevronLeftIcon} from './assets/icons/chevron_left.svg';
-  import { ReactComponent as ChevronRightIcon} from './assets/icons/chevron_right.svg';
 
   import './App.scss';
 //#endregion
@@ -38,21 +17,21 @@ function App() {
   //#region Arrays
     const technologies = {
       experimented: [
-        {id: 1, name: 'React Native', icon: <ReactNativeIcon/>},
-        {id: 2, name: 'React.js', icon: <ReactNativeIcon/>},
-        {id: 3, name: 'GraphQL', icon: <GraphQLIcon/>},
-        {id: 4, name: 'CSS', icon: <CssIcon/>},
-        {id: 5, name: 'PostgreSQL', icon: <PostgreSQLIcon/>},
-        {id: 6, name: 'TypeScript', icon: <TypeScriptIcon/>},
-        {id: 7, name: 'JavaScript', icon: <JavaScriptIcon/>},
-        {id: 8, name: 'Figma', icon: <FigmaIcon/>}
+        {name: 'React Native', icon: <ReactNativeIcon/>},
+        {name: 'React.js', icon: <ReactNativeIcon/>},
+        {name: 'GraphQL', icon: <GraphQLIcon/>},
+        {name: 'CSS', icon: <CssIcon/>},
+        {name: 'PostgreSQL', icon: <PostgreSQLIcon/>},
+        {name: 'TypeScript', icon: <TypeScriptIcon/>},
+        {name: 'JavaScript', icon: <JavaScriptIcon/>},
+        {name: 'Figma', icon: <FigmaIcon/>}
       ],
       familiar: [
-        {id: 1, name: 'HTML', icon: <HtmlIcon/>},
-        {id: 2, name: 'Node.js', icon: <NodeJsIcon/>},
-        {id: 3, name: 'Redux', icon: <ReduxIcon/>},
-        {id: 4, name: 'Sass', icon: <SassIcon/>},
-        {id: 5, name: 'Git', icon: <GitIcon/>}
+        {name: 'HTML', icon: <HtmlIcon/>},
+        {name: 'Node.js', icon: <NodeJsIcon/>},
+        {name: 'Redux', icon: <ReduxIcon/>},
+        {name: 'Sass', icon: <SassIcon/>},
+        {name: 'Git', icon: <GitIcon/>}
       ]
     };
 
@@ -101,7 +80,8 @@ function App() {
           "Détecter et résoudre les problèmes les plus communs dans le design d’applications mobiles",
           "Créer des blockframes et utiliser la méthode du carré rouge pour aligner le contenu"
         ],
-        picture: ui
+        picture: ui,
+        url: "https://hype4.academy/video-courses/mobile-ui-1"
       },
       {
         id: 2,
@@ -113,7 +93,8 @@ function App() {
           "Créer des ombres extérieures et intérieures de la bonne manière",
           "Ajouter des décorations pour rendre le produit unique"
         ],
-        picture: high_fidelity
+        picture: high_fidelity,
+        url: "https://hype4.academy/video-courses/mobile-ui-2"
       },
       {
         id: 3,
@@ -123,7 +104,8 @@ function App() {
           "Apprendre les concepts du graphic design comme l’agencement, la typographie, la hiérarchie visuelle, et d’autres astuces de design",
           "Créer d’élégants sites web avec Figma"
         ],
-        picture: web_design
+        picture: web_design,
+        url: "https://www.udemy.com/course/freelance-web-design-from-design-to-development-to-making-money/learn/lecture/17944210?start=615#content"
       },
       {
         id: 4,
@@ -137,7 +119,8 @@ function App() {
           "Prototyper ses créations (les rendre interactives)",
           "Présenter & mettre en avant ses designs"
         ],
-        picture: xd
+        picture: xd,
+        url: "https://www.udemy.com/course/designer-des-applications-mobiles/learn/lecture/10643848?start=15#content"
       },
       {
         id: 5,
@@ -154,7 +137,8 @@ function App() {
           "Être mis en avant sur l’App Store ou sur Google Play en utilisant l’ASO",
           "Créer de superbes icônes d’application, captures d’écran et vidéos pour convertir les utilisateurs"
         ],
-        picture: seo
+        picture: seo,
+        url: "https://www.udemy.com/course/app_marketing/learn/lecture/36497680?start=15#overview"
       },
     ]
 
@@ -170,7 +154,9 @@ function App() {
           <p className="navbar__logo">NINA <span style={{fontWeight: "800"}}>PETIT</span></p>
           <div className="navbar__links">
             <p>Accueil</p>
-            <p>Compétences</p>
+            <a href="#skills">Compétences et Formation</a>
+            <a href="#certificate">Certification et Langues</a>
+            <a href="#courses">Cours suivis</a>
             <p>Projet personnel</p>
             <div className="navbar__contact-button">
               <p>Contactez-moi</p>
@@ -196,12 +182,14 @@ function App() {
                   <p>Contactez-moi</p>
                   <BubbleIcon className="hero-section__info__buttons__contact__icon"/>
                 </button>
-                <button className="hero-section__info__buttons__cv">
-                  <p>
-                    Ouvrir mon CV
-                  </p>
-                  <OpenIcon className="hero-section__info__buttons__cv__icon"/>
-                </button>
+                <a className="hero-section__info__buttons__cv__anchor" href={CV} without rel="noopener noreferrer" target="_blank">
+                  <button className="hero-section__info__buttons__cv">
+                    <p>
+                      Ouvrir mon CV
+                    </p>
+                    <OpenIcon className="hero-section__info__buttons__cv__icon"/>
+                  </button>
+                </a>
               </div>
             </div>
           </div>
@@ -212,7 +200,7 @@ function App() {
       {
         //#region Skills
           <div className="skills-education">
-            <div className="skills">
+            <div className="skills" id="skills">
               <h3>Compétences et Formation</h3>
               <h4>Technologies</h4>
               <h5>Expérimentée</h5>
@@ -278,15 +266,17 @@ function App() {
         <div className="certificate-languages">
           {
             //#region Certificate
-            <div className="certificate">
+            <div className="certificate" id="certificate">
               <h3>Certification</h3>
-              <div className="opquast__header">
-                <OpquastIcon className="opquast__header__icon"/>
-                <div>
-                  <h6>Maîtrise de la qualité en projet web</h6>
-                  <span className="opquast__header__school">Opquast</span>
+              <a href="https://www.opquast.com/certification/" rel="noopener noreferrer" target="_blank">
+                <div className="opquast__header">
+                  <OpquastIcon className="opquast__header__icon"/>
+                  <div>
+                    <h6>Maîtrise de la qualité en projet web</h6>
+                    <span className="opquast__header__school">Opquast <OpenIcon className="opquast__header__open-icon"/></span>
+                  </div>
                 </div>
-              </div>
+              </a>
               <div className="opquast__mention">
                 <span className="opquast__mention__text">Mention Avancé <span style={{fontWeight: 600}}>(825/100)</span></span>
                 <StarIcon/>
@@ -322,7 +312,7 @@ function App() {
         </div>
         //#endregion
       }
-      <div className="courses">
+      <div className="courses" id="courses">
         <h3>Cours suivis</h3>
         <div className="courses__list">
           {courses.map(course => {
@@ -365,7 +355,9 @@ function App() {
           </button>
         </div>
         <div className="courses__info">
-          <h6>{courses[selectedCourseId - 1].name} <span className="courses__author">- {courses[selectedCourseId - 1].author}</span></h6>
+          <a href={courses[selectedCourseId - 1].url} rel="noopener noreferrer" target="_blank">
+            <h6>{courses[selectedCourseId - 1].name} <span className="courses__author">- {courses[selectedCourseId - 1].author}</span> <OpenIcon className="courses__open-icon"/></h6>
+          </a>
           <ul>
             {courses[selectedCourseId - 1].skills.map(skill =>
               <li>{skill}</li>
