@@ -28,6 +28,8 @@
   import { ReactComponent as CheckIcon} from './assets/icons/check.svg';
   import { ReactComponent as UsaIcon} from './assets/icons/usa.svg';
   import { ReactComponent as GermanyIcon} from './assets/icons/germany.svg';
+  import { ReactComponent as ChevronLeftIcon} from './assets/icons/chevron_left.svg';
+  import { ReactComponent as ChevronRightIcon} from './assets/icons/chevron_right.svg';
 
   import './App.scss';
 //#endregion
@@ -93,21 +95,65 @@ function App() {
         id: 1,
         name: "UI in Mobile Apps",
         author: "Michal Malewicz",
-        description: "Apprendre à designer une application mobile fonctionnelle, Choisir les bonnes polices et couleurs, Détecter et résoudre les problèmes les plus communs dans le design d’applications mobiles, Créer des blockframes et utiliser la méthode du carré rouge pour aligner le contenu",
+        skills: [
+          "Apprendre à designer une application mobile fonctionnelle",
+          "Choisir les bonnes polices et couleurs",
+          "Détecter et résoudre les problèmes les plus communs dans le design d’applications mobiles",
+          "Créer des blockframes et utiliser la méthode du carré rouge pour aligner le contenu"
+        ],
         picture: ui
       },
       {
         id: 2,
-        name: "test1",
-        author: "Michal",
-        description: "test",
+        name: "High Fidelity",
+        author: "Michal Malewicz",
+        skills: [
+          "Apprendre à designer une application mobile fonctionnelle et élégante",
+          "Choisir les bonnes polices et couleurs, créer de beaux dégradés et bien associer les couleurs",
+          "Créer des ombres extérieures et intérieures de la bonne manière",
+          "Ajouter des décorations pour rendre le produit unique"
+        ],
         picture: high_fidelity
       },
       {
         id: 3,
-        name: "test2",
-        author: "Michal",
-        description: "test",
+        name: "Complete Web Design",
+        author: "Vako Shvili",
+        skills: [
+          "Apprendre les concepts du graphic design comme l’agencement, la typographie, la hiérarchie visuelle, et d’autres astuces de design",
+          "Créer d’élégants sites web avec Figma"
+        ],
+        picture: web_design
+      },
+      {
+        id: 4,
+        name: "UI/UX App Design",
+        author: "Axel Paris",
+        skills: [
+          "Créer et utiliser des Personas",
+          "Créer des Wireframes",
+          "Concevoir un parcours utilisateur (UX)",
+          "Créer une interface utilisateur (UI)",
+          "Prototyper ses créations (les rendre interactives)",
+          "Présenter & mettre en avant ses designs"
+        ],
+        picture: xd
+      },
+      {
+        id: 5,
+        name: "Mobile App Marketing & App Store Optimization (ASO)",
+        author: "Darius Mora",
+        skills: [
+          "App Store Optimization (ASO)",
+          "La différence entre SEO et ASO, et comment créer la bonne stratégie",
+          "Le modèle A.A.R.R.R (Acquisition, activation, rétention, recommandation, revenu)",
+          "Monétiser son application et choisir la bonne stratégie de prix",
+          "Obtenir de nouveaux utilisateurs gratuitement avec le bon marketing",
+          "Scaler son application et utiliser les publicités payantes avec l’ASO",
+          "Éviter les désinstallations et augmenter la rétention",
+          "Être mis en avant sur l’App Store ou sur Google Play en utilisant l’ASO",
+          "Créer de superbes icônes d’application, captures d’écran et vidéos pour convertir les utilisateurs"
+        ],
         picture: seo
       },
     ]
@@ -159,7 +205,7 @@ function App() {
               </div>
             </div>
           </div>
-          <img src={header_picture} alt="me" className="hero-section__img" />
+          <img src={header_picture} alt="Presentation of me" className="hero-section__img" />
         </div>
         //#endregion
       }
@@ -279,24 +325,52 @@ function App() {
       <div className="courses">
         <h3>Cours suivis</h3>
         <div className="courses__list">
-          {courses.map(course =>
-            <div 
-            className={"course__box" + (course.id === selectedCourseId ? " current_course" : course.id === selectedCourseId + 1 ? " next_course" : ((course.id === selectedCourseId - 1) || (selectedCourseId === 1 && course.id === 3)) ? " previous_course" : null)}
-            >
-              <img
-                src={course.picture}
-                alt="picture"
-                className={"course__picture" + (course.id === selectedCourseId ? " current_course__picture" : course.id === selectedCourseId + 1 ? " next_course__picture" : ((course.id === selectedCourseId - 1) || (selectedCourseId === 1 && course.id === 3)) ? " previous_course__picture" : null)}
-              />
-              <div className="course__box__shadow"/>
-              {course.id === selectedCourseId &&
-                <>
-                  <div className="course__box__side-shadow course__box__side-shadow__right"/>
-                  <div className="course__box__side-shadow course__box__side-shadow__left"/>
-                </>
-              }
-            </div>
-          )}
+          {courses.map(course => {
+            if((selectedCourseId - 1 <= course.id && course.id <= selectedCourseId + 1) || (course.id === 1 && selectedCourseId === 5) ||  (course.id === 5 && selectedCourseId === 1)) {
+              return (
+                <div 
+                className={"course__box" + (course.id === selectedCourseId ? " current_course" : ((course.id === selectedCourseId + 1) || (selectedCourseId === 5 && course.id === 1)) ? " next_course" : ((course.id === selectedCourseId - 1) || (selectedCourseId === 1 && course.id === 5)) ? " previous_course" : null)}
+                >
+                  <img
+                    src={course.picture}
+                    alt="Course presentation"
+                    className={"course__picture" + (course.id === selectedCourseId ? " current_course__picture" : ((course.id === selectedCourseId + 1) || (selectedCourseId === 5 && course.id === 1)) ? " next_course__picture" : ((course.id === selectedCourseId - 1) || (selectedCourseId === 1 && course.id === 5)) ? " previous_course__picture" : null)}
+                  />
+                  <div className="course__box__shadow"/>
+                  {course.id === selectedCourseId &&
+                    <>
+                      <div className="course__box__side-shadow course__box__side-shadow__right"/>
+                      <div className="course__box__side-shadow course__box__side-shadow__left"/>
+                    </>
+                  }
+                </div>
+              )
+            } else {
+              return <></>
+            }
+          })}
+        </div>
+        <div style={{marginBottom: "50px", left: "-49px", position: "relative"}}>
+          <button
+            className="courses__button courses__button__left"
+            onClick={() => setSelectedCourseId(selectedCourseId > 1 ? selectedCourseId - 1 : 5)}
+          >
+            <ChevronLeftIcon className="chevron chevron__left"/>
+          </button>
+          <button
+            className="courses__button courses__button__right"
+            onClick={() => setSelectedCourseId(selectedCourseId < courses.length ? selectedCourseId + 1 : 1)}
+          >
+            <ChevronRightIcon className="chevron"/>
+          </button>
+        </div>
+        <div className="courses__info">
+          <h6>{courses[selectedCourseId - 1].name} <span className="courses__author">- {courses[selectedCourseId - 1].author}</span></h6>
+          <ul>
+            {courses[selectedCourseId - 1].skills.map(skill =>
+              <li>{skill}</li>
+            )}
+          </ul>
         </div>
       </div>
     </div>

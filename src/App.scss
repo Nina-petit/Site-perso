@@ -41,6 +41,10 @@
     margin-bottom: 5px;
   }
 
+  p {
+    color: #333745;
+  }
+  
   button {
     cursor: pointer;
     border: none;
@@ -392,6 +396,24 @@
 
 .courses {
   padding: 10px 140px;
+  margin-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h3 {
+    align-self: flex-start;
+  }
+  
+  h6 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 15px;
+  }
+
+  p {
+    font-size: 18px;
+  }
 
   &__list {
     width: 100%;
@@ -399,7 +421,39 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    margin-bottom: 200px;
+    margin-bottom: 40px;
+    left: -49px;
+  }
+
+  &__author {
+    font-weight: 400;
+    color: #656978;
+  }
+
+  &__info {
+    align-self: flex-start;
+  }
+
+  &__button {
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    cursor: pointer;
+
+    &__left {
+      margin-right: 50px;
+    }
+  }
+
+  ul {
+    min-height: 260px;
+  }
+
+  li {
+    font-size: 18px;
+    font-family: "Roboto";
+    line-height: 160%;
+    font-weight: 400;
   }
 }
 
@@ -472,4 +526,8 @@
   &__right {
     right: -20px;
   }
+}
+
+.chevron {
+  transform: scale(2);
 }
