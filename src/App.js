@@ -1,7 +1,7 @@
 //#region Imports
   import React, { useState } from 'react';
 
-  import { BubbleIcon, OpenIcon, CssIcon, FigmaIcon, GitIcon, GraphQLIcon, HtmlIcon, JavaScriptIcon, NodeJsIcon, PostgreSQLIcon, ReactNativeIcon, ReduxIcon, SassIcon, TypeScriptIcon, OclockIcon, SkemaIcon, OpquastIcon, StarIcon, CheckIcon, UsaIcon, GermanyIcon, ChevronLeftIcon, ChevronRightIcon, } from './assets/icons';
+  import { BubbleIcon, OpenIcon, CssIcon, FigmaIcon, GitIcon, GraphQLIcon, HtmlIcon, JavaScriptIcon, NodeJsIcon, PostgreSQLIcon, ReactNativeIcon, ReduxIcon, SassIcon, TypeScriptIcon, OclockIcon, SkemaIcon, OpquastIcon, StarIcon, CheckIcon, UsaIcon, GermanyIcon, ChevronLeftIcon, ChevronRightIcon, DownloadAppStoreIcon } from './assets/icons';
   import header_picture from './assets/hero_picture.JPG';
   import CV from './assets/CV.pdf';
   import ui from './assets/ui.png';
@@ -9,6 +9,9 @@
   import seo from './assets/seo.png';
   import xd from './assets/xd.png';
   import web_design from './assets/web_design.png';
+  import vegetalist_fridge from './assets/vegetalist_fridge.png';
+  import vegetalist_recipes from './assets/vegetalist_recipes.png';
+  import download_playstore from './assets/download_playstore.png';
 
   import './App.scss';
 //#endregion
@@ -140,11 +143,17 @@ function App() {
         picture: seo,
         url: "https://www.udemy.com/course/app_marketing/learn/lecture/36497680?start=15#overview"
       },
-    ]
+    ];
 
+    const vegetalistInfo = [
+      "L'application qui se base sur les ingrédients des utilisateur.ice.s pour trouver des recettes vegan réalisables.",
+      "Mise en place d’abonnements in-app; Inscription/connexion avec email, Facebook, Google et Apple; SDK Facebook pour promouvoir l’application avec Facebook Ads; Ajout de Google Admob pour afficher des publicités dans l’application",
+      "React Native, TypeScript, Apollo Client, GraphQL, PostgreSQL, Git, utilisation de données extérieures (Open Food Facts)"
+    ]
   //#endregion
 
   const [selectedCourseId, setSelectedCourseId] = useState(1);
+  const [selectedTabId, setSelectedTabId] = useState(1);
 
   return (
     <div className="App">
@@ -370,6 +379,57 @@ function App() {
                 <li>{skill}</li>
               )}
             </ul>
+          </div>
+        </div>
+        //#endregion
+      }
+      {
+        //#region Personal project
+        <div className="personal-project">
+          <div className="personal_project__pictures">
+            <img className="personal-project__picture personal-project__picture__fridge" src={vegetalist_fridge}/>
+            <img className="personal-project__picture personal-project__picture__recipes" src={vegetalist_recipes}/>
+          </div>
+          <div>
+            <h3>Vegetalist</h3>
+            <h4>Application en React Native</h4>
+            <p>Création d'une application qui se base sur les ingrédients des utilisateur.ice.s pour trouver des recettes vegan réalisables.</p>
+            <div className="personal-project__info">
+              <div className="personal-project__info__tabs">
+                <button 
+                  className="personal-project__info__tabs__tab" style={{background: selectedTabId === 1 && "linear-gradient(90deg, #D4D8F9 0%, #D5D9F8 100%)"}}
+                  onClick={() => setSelectedTabId(1)}
+                >
+                  <span style={{color: selectedTabId === 1 && "#596078"}}>Fonctionnement</span>
+                </button>
+                <button
+                  className="personal-project__info__tabs__tab" style={{background: selectedTabId === 2 && "linear-gradient(90deg, #D5DAF8 0%, #D4DDF8 100%)"}}
+                  onClick={() => setSelectedTabId(2)}
+                >
+                  <span style={{color: selectedTabId === 2 && "#596078"}}>Implémentations</span>
+                </button>
+                <button
+                  className="personal-project__info__tabs__tab" style={{background: selectedTabId === 3 && "linear-gradient(90deg, #D4DDF8 0%, #D4DFF8 100%)"}}
+                  onClick={() => setSelectedTabId(3)}
+                >
+                  <span style={{color: selectedTabId === 3 && "#596078"}}>Technologies</span>
+                </button>
+              </div>
+              <div className="personal-project__info__box">
+                <p>
+                  {vegetalistInfo[selectedTabId - 1]}
+                </p>
+              </div>
+              <div className="personal-project__info__shadow"/>
+            </div>
+            <div className="personal-project__buttons">
+              <a href="https://play.google.com/store/apps/details?id=com.vegetalist&hl=fr" without rel="noopener noreferrer" target="_blank">
+                <img className="personal-project__buttons__playstore" src={download_playstore}/>
+              </a>
+              <a href="https://apps.apple.com/fr/app/vegetalist-recettes-vegan/id1636482445" without rel="noopener noreferrer" target="_blank">
+                <DownloadAppStoreIcon className="personal-project__buttons__appstore"/>
+              </a>
+            </div>
           </div>
         </div>
         //#endregion

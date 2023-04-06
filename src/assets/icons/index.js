@@ -21,3 +21,4 @@ export { ReactComponent as UsaIcon} from './usa.svg';
 export { ReactComponent as GermanyIcon} from './germany.svg';
 export { ReactComponent as ChevronLeftIcon} from './chevron_left.svg';
 export { ReactComponent as ChevronRightIcon} from './chevron_right.svg';
+export { ReactComponent as DownloadAppStoreIcon} from './download_appstore.svg';
