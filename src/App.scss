@@ -57,45 +57,56 @@
 
 //#region Navbar
   .navbar {
-    height: 72;
+    position: absolute;
+    height: 72px;
     top: 0;
     right: 0;
     left: 0;
-    position: absolute;
     padding: 0 60px 0 140px;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
 
-    display: flex;
-
     &__logo {
-      margin-right: auto;
       color: #333745;
       text-transform: uppercase;
+
+      &__last-name {
+        font-weight: 800
+      }
     }
 
     &__links {
-      display: flex;
-      color:#fff;
-      align-items: center;
+      ul {
+        list-style-type: none;
+        color:#fff;
+        display: flex;
+        align-items: center;
+      }
 
-      p, a {
-        margin-left: 30px;
+      span, a {
+        color: #FFF;
         text-shadow: 0px 1px 2px rgba(99, 101, 102, 0.7);
+      }
+
+      a {
+        margin-left: 30px;
       }
 
       p:hover, a:hover {
         text-decoration: underline;
       }
-    }
 
-    &__contact-button {
-      padding: 10px 20px;
-      margin: 15px 0px 15px 30px;
-      background-color: rgba(255, 255, 255, 0.3);
-      border-radius: 8px;
-
-      p {
-        margin-left: 0;
+      &__contact {
+        display: flex;
+        align-items: center;
+  
+        
+        div {
+          padding: 10px 20px;
+          background-color: rgba(255, 255, 255, 0.3);
+          border-radius: 8px;
+        }
       }
     }
   }
@@ -325,6 +336,7 @@
   }
 //#endregion
 
+//#region Certificate and languages
 .certificate-languages {
   padding: 90px 140px;
   display: flex;
@@ -409,7 +421,9 @@
     font-size: 18px;
   }
 }
+//#endregion
 
+//#region Courses
 .courses {
   padding: 10px 140px;
   margin-bottom: 100px;
@@ -551,3 +565,4 @@
 .chevron {
   transform: scale(2);
 }
+//#endregion

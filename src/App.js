@@ -151,17 +151,22 @@ function App() {
       {
         //#region Navbar
         <div className="navbar">
-          <p className="navbar__logo">NINA <span style={{fontWeight: "800"}}>PETIT</span></p>
-          <div className="navbar__links">
-            <p>Accueil</p>
-            <a href="#skills">Compétences et Formation</a>
-            <a href="#certificate">Certification et Langues</a>
-            <a href="#courses">Cours suivis</a>
-            <p>Projet personnel</p>
-            <div className="navbar__contact-button">
-              <p>Contactez-moi</p>
-            </div>
+          <div className="navbar__logo">
+            <span>NINA </span>
+            <span className="navbar__logo__last-name">PETIT</span>
           </div>
+          <nav className="navbar__links">
+            <ul>
+              <li><a href="#" title="Aller à la section Accueil">Accueil</a></li>
+              <li><a href="#skills" title="Aller à la section Compétences et Formation">Compétences et Formation</a></li>
+              <li><a href="#certificate" title="Aller à la section Certification et Langues">Certification et Langues</a></li>
+              <li><a href="#courses" title="Aller à la section Cours suivis">Cours suivis</a></li>
+              <li><a href="#" title="Aller à la section Projet personnel">Projet personnel</a></li>
+              <li><a href="#" title="Aller à la section Contact" className="navbar__links__contact"><div>
+                <span>Contactez-moi</span>
+              </div></a></li>
+            </ul>
+          </nav>
         </div>
         //#endregion
       }
@@ -312,59 +317,63 @@ function App() {
         </div>
         //#endregion
       }
-      <div className="courses" id="courses">
-        <h3>Cours suivis</h3>
-        <div className="courses__list">
-          {courses.map(course => {
-            if((selectedCourseId - 1 <= course.id && course.id <= selectedCourseId + 1) || (course.id === 1 && selectedCourseId === 5) ||  (course.id === 5 && selectedCourseId === 1)) {
-              return (
-                <div 
-                className={"course__box" + (course.id === selectedCourseId ? " current_course" : ((course.id === selectedCourseId + 1) || (selectedCourseId === 5 && course.id === 1)) ? " next_course" : ((course.id === selectedCourseId - 1) || (selectedCourseId === 1 && course.id === 5)) ? " previous_course" : null)}
-                >
-                  <img
-                    src={course.picture}
-                    alt="Course presentation"
-                    className={"course__picture" + (course.id === selectedCourseId ? " current_course__picture" : ((course.id === selectedCourseId + 1) || (selectedCourseId === 5 && course.id === 1)) ? " next_course__picture" : ((course.id === selectedCourseId - 1) || (selectedCourseId === 1 && course.id === 5)) ? " previous_course__picture" : null)}
-                  />
-                  <div className="course__box__shadow"/>
-                  {course.id === selectedCourseId &&
-                    <>
-                      <div className="course__box__side-shadow course__box__side-shadow__right"/>
-                      <div className="course__box__side-shadow course__box__side-shadow__left"/>
-                    </>
-                  }
-                </div>
-              )
-            } else {
-              return <></>
-            }
-          })}
+      {
+        //#region Courses
+        <div className="courses" id="courses">
+          <h3>Cours suivis</h3>
+          <div className="courses__list">
+            {courses.map(course => {
+              if((selectedCourseId - 1 <= course.id && course.id <= selectedCourseId + 1) || (course.id === 1 && selectedCourseId === 5) ||  (course.id === 5 && selectedCourseId === 1)) {
+                return (
+                  <div 
+                  className={"course__box" + (course.id === selectedCourseId ? " current_course" : ((course.id === selectedCourseId + 1) || (selectedCourseId === 5 && course.id === 1)) ? " next_course" : ((course.id === selectedCourseId - 1) || (selectedCourseId === 1 && course.id === 5)) ? " previous_course" : null)}
+                  >
+                    <img
+                      src={course.picture}
+                      alt="Course presentation"
+                      className={"course__picture" + (course.id === selectedCourseId ? " current_course__picture" : ((course.id === selectedCourseId + 1) || (selectedCourseId === 5 && course.id === 1)) ? " next_course__picture" : ((course.id === selectedCourseId - 1) || (selectedCourseId === 1 && course.id === 5)) ? " previous_course__picture" : null)}
+                    />
+                    <div className="course__box__shadow"/>
+                    {course.id === selectedCourseId &&
+                      <>
+                        <div className="course__box__side-shadow course__box__side-shadow__right"/>
+                        <div className="course__box__side-shadow course__box__side-shadow__left"/>
+                      </>
+                    }
+                  </div>
+                )
+              } else {
+                return <></>
+              }
+            })}
+          </div>
+          <div style={{marginBottom: "50px", left: "-49px", position: "relative"}}>
+            <button
+              className="courses__button courses__button__left"
+              onClick={() => setSelectedCourseId(selectedCourseId > 1 ? selectedCourseId - 1 : 5)}
+            >
+              <ChevronLeftIcon className="chevron chevron__left"/>
+            </button>
+            <button
+              className="courses__button courses__button__right"
+              onClick={() => setSelectedCourseId(selectedCourseId < courses.length ? selectedCourseId + 1 : 1)}
+            >
+              <ChevronRightIcon className="chevron"/>
+            </button>
+          </div>
+          <div className="courses__info">
+            <a href={courses[selectedCourseId - 1].url} rel="noopener noreferrer" target="_blank">
+              <h6>{courses[selectedCourseId - 1].name} <span className="courses__author">- {courses[selectedCourseId - 1].author}</span> <OpenIcon className="courses__open-icon"/></h6>
+            </a>
+            <ul>
+              {courses[selectedCourseId - 1].skills.map(skill =>
+                <li>{skill}</li>
+              )}
+            </ul>
+          </div>
         </div>
-        <div style={{marginBottom: "50px", left: "-49px", position: "relative"}}>
-          <button
-            className="courses__button courses__button__left"
-            onClick={() => setSelectedCourseId(selectedCourseId > 1 ? selectedCourseId - 1 : 5)}
-          >
-            <ChevronLeftIcon className="chevron chevron__left"/>
-          </button>
-          <button
-            className="courses__button courses__button__right"
-            onClick={() => setSelectedCourseId(selectedCourseId < courses.length ? selectedCourseId + 1 : 1)}
-          >
-            <ChevronRightIcon className="chevron"/>
-          </button>
-        </div>
-        <div className="courses__info">
-          <a href={courses[selectedCourseId - 1].url} rel="noopener noreferrer" target="_blank">
-            <h6>{courses[selectedCourseId - 1].name} <span className="courses__author">- {courses[selectedCourseId - 1].author}</span> <OpenIcon className="courses__open-icon"/></h6>
-          </a>
-          <ul>
-            {courses[selectedCourseId - 1].skills.map(skill =>
-              <li>{skill}</li>
-            )}
-          </ul>
-        </div>
-      </div>
+        //#endregion
+      }
     </div>
   );
 }
