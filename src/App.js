@@ -146,9 +146,14 @@ function App() {
     ];
 
     const vegetalistInfo = [
-      "L'application qui se base sur les ingrédients des utilisateur.ice.s pour trouver des recettes vegan réalisables.",
-      "Mise en place d’abonnements in-app; Inscription/connexion avec email, Facebook, Google et Apple; SDK Facebook pour promouvoir l’application avec Facebook Ads; Ajout de Google Admob pour afficher des publicités dans l’application",
-      "React Native, TypeScript, Apollo Client, GraphQL, PostgreSQL, Git, utilisation de données extérieures (Open Food Facts)"
+      <p>La personne ajoute ses ingrédients en les scannant ou en naviguant sur la page des ingrédients, puis a accès à une liste de recettes triées par nombre d’ingrédients manquants. Elle peut les filtrer par termes, catégorie ou ingrédients présents. Elle peut également ajouter les recettes en favoris, ou leur y ajouter des j’aime et des commentaires.</p>,
+      <ul>
+        <li>Mise en place d’abonnements in-app</li>
+        <li>Inscription/connexion avec email, Facebook, Google et Apple</li>
+        <li>SDK Facebook pour promouvoir l’application avec Facebook Ads</li>
+        <li>Ajout de Google Admob pour afficher des publicités dans l’application</li>
+      </ul>,
+      <p>React Native, TypeScript, Apollo Client, GraphQL, PostgreSQL, Git, utilisation de données extérieures (Open Food Facts)</p>
     ]
   //#endregion
 
@@ -416,9 +421,7 @@ function App() {
                 </button>
               </div>
               <div className="personal-project__info__box">
-                <p>
-                  {vegetalistInfo[selectedTabId - 1]}
-                </p>
+                {vegetalistInfo[selectedTabId - 1]}
               </div>
               <div className="personal-project__info__shadow"/>
             </div>
