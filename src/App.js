@@ -1,7 +1,8 @@
 //#region Imports
   import React, { useState } from 'react';
+  import { send } from 'emailjs-com';
 
-  import { BubbleIcon, OpenIcon, CssIcon, FigmaIcon, GitIcon, GraphQLIcon, HtmlIcon, JavaScriptIcon, NodeJsIcon, PostgreSQLIcon, ReactNativeIcon, ReduxIcon, SassIcon, TypeScriptIcon, OclockIcon, SkemaIcon, OpquastIcon, StarIcon, CheckIcon, UsaIcon, GermanyIcon, ChevronLeftIcon, ChevronRightIcon, DownloadAppStoreIcon } from './assets/icons';
+  import { BubbleIcon, OpenIcon, CssIcon, FigmaIcon, GitIcon, GraphQLIcon, HtmlIcon, JavaScriptIcon, NodeJsIcon, PostgreSQLIcon, ReactNativeIcon, ReduxIcon, SassIcon, TypeScriptIcon, OclockIcon, SkemaIcon, OpquastIcon, StarIcon, CheckIcon, UsaIcon, GermanyIcon, ChevronLeftIcon, ChevronRightIcon, DownloadAppStoreIcon, PhoneIcon, EmailIcon } from './assets/icons';
   import header_picture from './assets/hero_picture.JPG';
   import CV from './assets/CV.pdf';
   import ui from './assets/ui.png';
@@ -160,6 +161,33 @@ function App() {
   const [selectedCourseId, setSelectedCourseId] = useState(1);
   const [selectedTabId, setSelectedTabId] = useState(1);
 
+  const [toSend, setToSend] = useState({
+    from_name: '',
+    subject: '',
+    message: '',
+    reply_to: ''
+  });
+
+  const handleChange = (e) => {
+    setToSend({ ...toSend, [e.target.name]: e.target.value });
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    send(
+      'service_8xv9aw2',
+      'template_si36r4n',
+      toSend,
+      'G-lOYQ0JadxS0MyQF'
+    )
+      .then((response) => {
+        console.log('SUCCESS!', response.status, response.text);
+      })
+      .catch((err) => {
+        console.log('FAILED...', err);
+      });
+  };
+
   return (
     <div className="App">
       {
@@ -201,13 +229,9 @@ function App() {
                   <p>Contactez-moi</p>
                   <BubbleIcon className="hero-section__info__buttons__contact__icon"/>
                 </button>
-                <a className="hero-section__info__buttons__cv__anchor" href={CV} without rel="noopener noreferrer" target="_blank">
-                  <button className="hero-section__info__buttons__cv">
-                    <p>
-                      Ouvrir mon CV
-                    </p>
-                    <OpenIcon className="hero-section__info__buttons__cv__icon"/>
-                  </button>
+                <a className="hero-section__info__buttons__cv" href={CV} without rel="noopener noreferrer" target="_blank">
+                  <p>Ouvrir mon CV</p>
+                  <OpenIcon className="hero-section__info__buttons__cv__icon"/>
                 </a>
               </div>
             </div>
@@ -433,6 +457,68 @@ function App() {
                 <DownloadAppStoreIcon className="personal-project__buttons__appstore"/>
               </a>
             </div>
+          </div>
+        </div>
+        //#endregion
+      }
+      {
+        //#region Contact
+        <div className="contact">
+          <h3>Contactez-moi</h3>
+          <h4>Coordonnées</h4>
+          <div className="contact__details">
+            <a href="tel:+33643119907">
+              <div>
+                <PhoneIcon/>
+                <a href="tel:+33643119907">06 43 11 99 07</a>
+              </div>
+            </a>
+            <a href="mailto: nina.petit6@gmail.com">
+              <div>
+                <EmailIcon/>
+                <span>nina.petit6@gmail.com</span>
+              </div>
+            </a>
+          </div>
+          <div className="contact__box" onSubmit={onSubmit}>
+            <form className="contact__box__card">
+              <div className="contact__box__card__first-line">
+                <input
+                  type="text"
+                  name="from_name"
+                  placeholder="Nom"
+                  value={toSend.from_name}
+                  onChange={handleChange}
+                  className="contact__box__card__input contact__box__card__first-line__name"
+                />
+                <input
+                  type="email"
+                  name="reply_to"
+                  placeholder="Email"
+                  value={toSend.reply_to}
+                  onChange={handleChange}
+                  className="contact__box__card__input"
+                />
+              </div>
+              <input
+                type="text"
+                name="subject"
+                placeholder="Sujet"
+                value={toSend.subject}
+                onChange={handleChange}
+                className="contact__box__card__input"
+              />
+              <textarea
+                type="text"
+                name="message"
+                placeholder="Message"
+                value={toSend.message}
+                onChange={handleChange}
+                className="contact__box__card__input contact__box__card__input__message"
+              />
+              <input type="submit" value="Envoyer"/>
+            </form>
+            <div className="contact__box__shadow"/>
           </div>
         </div>
         //#endregion
