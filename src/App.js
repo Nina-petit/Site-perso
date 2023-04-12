@@ -241,66 +241,76 @@ function App() {
         //#endregion
       }
       {
-        //#region Skills
+        //#region Skills and education
           <div className="skills-education">
-            <div className="skills" id="skills">
-              <h3>Compétences et Formation</h3>
-              <h4>Technologies</h4>
-              <h5>Expérimentée</h5>
-              <div className="skills__technologies">
-                {technologies.experimented.map(techno =>
-                  <div className="skills__technologies__technology">
-                    {techno.icon}
-                    <span>{techno.name}</span>
-                  </div>
-                )}
-              </div>
-              <h5>Familier</h5>
-              <div className="skills__technologies">
-                {technologies.familiar.map(techno =>
-                  <div className="skills__technologies__technology">
-                    {techno.icon}
-                    <span>{techno.name}</span>
-                  </div>
-                )}
-              </div>
-            </div>
-            <div className="education">
-              <h4>Formation</h4>
-              <div className="education__content">
-                <div className="education__line"/>
-                <div className="education__boxes">
-                  {education.map(education =>
-                    <div className="education__box">
-                      <div className="education__box__card">
-                        <h6>{education.title}</h6>
-                        <div className="education__box__card__info">
-                          <span className="education__box__card__info__date">{education.date}</span>
-                          <span className="education__box__card__info__school">{education.school}</span>
-                          {education.school === "O'Clock" ?
-                            <OclockIcon/>
-                            : education.school === "SKEMA" ?
-                            <SkemaIcon/>
-                            : null
-                          } 
-                        </div>
-                        <p>{education.description}</p>
-                        {education.school === "O'Clock" &&
-                          <div className="education__box__card__technologies">
-                            {oclock_technologies.map(techno => 
-                              <div className="technology">
-                                {techno}
-                              </div>
-                            )}
-                          </div>
-                        }
-                      </div>
-                      <div className="education__box__shadow"/>
+            {
+              //#region Skills
+              <div className="skills" id="skills">
+                <h3>Compétences et Formation</h3>
+                <h4>Technologies</h4>
+                <h5>Expérimentée</h5>
+                <div className="skills__technologies">
+                  {technologies.experimented.map(techno =>
+                    <div className="skills__technologies__technology">
+                      <div>{techno.icon}</div>
+                      <span>{techno.name}</span>
+                    </div>
+                  )}
+                </div>
+                <h5>Familier</h5>
+                <div className="skills__technologies">
+                  {technologies.familiar.map(techno =>
+                    <div className="skills__technologies__technology">
+                      <div>{techno.icon}</div>
+                      <span>{techno.name}</span>
                     </div>
                   )}
                 </div>
               </div>
-            </div>
+              //#endregion
+            }
+            {
+              //#region Education
+              <div className="education">
+                <h4>Formation</h4>
+                <div className="education__content">
+                  <div className="education__line"/>
+                  <div className="education__boxes">
+                    {education.map(education =>
+                      <div className="education__box">
+                        <div className="education__box__card">
+                          <h6>{education.title}</h6>
+                          <div className="education__box__card__info">
+                            <span className="education__box__card__info__date">{education.date}</span>
+                            <span className="education__box__card__info__school">{education.school}</span>
+                            {education.school === "O'Clock" ?
+                              <OclockIcon/>
+                              : education.school === "SKEMA" ?
+                              <SkemaIcon/>
+                              : null
+                            } 
+                          </div>
+                          <p>{education.description}</p>
+                          {education.school === "O'Clock" &&
+                            <div className="education__box__card__technologies">
+                              {oclock_technologies.map(techno => 
+                                <div className="technology">
+                                  {techno}
+                                </div>
+                              )}
+                            </div>
+                          }
+                          <div className='education__box__card__bubble'/>
+                        </div>
+                        <div className="education__box__shadow"/>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+              //#endregion
+            }
+            {[...Array(6)].map((e, i) => <div className="skills-education__decoration" id={`decoration_${i}`}/>)}
           </div>
         //#endregion
       }
