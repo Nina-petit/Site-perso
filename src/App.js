@@ -203,8 +203,8 @@ function App() {
               <li><a href="#skills" title="Aller à la section Compétences et Formation">Compétences et Formation</a></li>
               <li><a href="#certificate" title="Aller à la section Certification et Langues">Certification et Langues</a></li>
               <li><a href="#courses" title="Aller à la section Cours suivis">Cours suivis</a></li>
-              <li><a href="#" title="Aller à la section Projet personnel">Projet personnel</a></li>
-              <li><a href="#" title="Aller à la section Contact" className="navbar__links__contact"><div>
+              <li><a href="#personal-project" title="Aller à la section Projet personnel">Projet personnel</a></li>
+              <li><a href="#contact" title="Aller à la section Contact" className="navbar__links__contact"><div>
                 <span>Contactez-moi</span>
               </div></a></li>
             </ul>
@@ -225,10 +225,10 @@ function App() {
                 CDI en full remote.
               </p>
               <div className="hero-section__info__buttons">
-                <button className="hero-section__info__buttons__contact">
+                <a className="hero-section__info__buttons__contact" href="#contact">
                   <p>Contactez-moi</p>
                   <BubbleIcon className="hero-section__info__buttons__contact__icon"/>
-                </button>
+                </a>
                 <a className="hero-section__info__buttons__cv" href={CV} without rel="noopener noreferrer" target="_blank">
                   <p>Ouvrir mon CV</p>
                   <OpenIcon className="hero-section__info__buttons__cv__icon"/>
@@ -395,7 +395,7 @@ function App() {
               }
             })}
           </div>
-          <div style={{marginBottom: "50px", left: "-49px", position: "relative"}}>
+          <div style={{marginBottom: "20px", left: "-49px", position: "relative"}}>
             <button
               className="courses__button courses__button__left"
               onClick={() => setSelectedCourseId(selectedCourseId > 1 ? selectedCourseId - 1 : 5)}
@@ -424,7 +424,7 @@ function App() {
       }
       {
         //#region Personal project
-        <div className="personal-project">
+        <div className="personal-project" id="personal-project">
           <div className="personal_project__pictures">
             <img className="personal-project__picture personal-project__picture__fridge" src={vegetalist_fridge}/>
             <img className="personal-project__picture personal-project__picture__recipes" src={vegetalist_recipes}/>
@@ -473,7 +473,7 @@ function App() {
       }
       {
         //#region Contact
-        <div className="contact">
+        <div className="contact" id="contact">
           <h3>Contactez-moi</h3>
           <h4>Coordonnées</h4>
           <div className="contact__details">
