@@ -466,11 +466,11 @@ function App() {
               <div className="personal-project__info__shadow"/>
             </div>
             <div className="personal-project__buttons">
-              <a href="https://play.google.com/store/apps/details?id=com.vegetalist&hl=fr" without rel="noopener noreferrer" target="_blank">
-                <img className="personal-project__buttons__playstore" src={download_playstore}/>
+              <a className="personal-project__buttons__playstore" href="https://play.google.com/store/apps/details?id=com.vegetalist&hl=fr" without rel="noopener noreferrer" target="_blank">
+                <img src={download_playstore}/>
               </a>
               <a href="https://apps.apple.com/fr/app/vegetalist-recettes-vegan/id1636482445" without rel="noopener noreferrer" target="_blank">
-                <DownloadAppStoreIcon className="personal-project__buttons__appstore"/>
+                <DownloadAppStoreIcon/>
               </a>
             </div>
           </div>

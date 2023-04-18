@@ -58,15 +58,14 @@
 //#region Navbar
   .navbar {
     position: absolute;
-    height: 72px;
-    top: 0;
-    right: 0;
-    left: 0;
-    padding: 0 60px 0 140px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-
+    height: 72px;
+    right: 0;
+    left: 0;
+    padding: 0 60px 0 140px;
+    
     &__logo {
       color: #333745;
       text-transform: uppercase;
@@ -78,10 +77,10 @@
 
     &__links {
       ul {
-        list-style-type: none;
-        color:#fff;
         display: flex;
         align-items: center;
+        color:#fff;
+        list-style-type: none;
       }
 
       span, a {
@@ -100,7 +99,6 @@
       &__contact {
         display: flex;
         align-items: center;
-  
         
         div {
           padding: 10px 20px;
@@ -115,7 +113,6 @@
 //#region Hero section
   .hero-section {
     display: flex;
-    flex-direction: row;
     height: 90vh;
 
     h1 span {
@@ -123,30 +120,20 @@
     }
     
     &__left {
-      width: 50%;
-      height: 100%;
       display: flex;
-      flex-direction: row;
-      flex-wrap: nowrap;
       justify-content: center;
       align-items: center;
       align-content: center;
+      width: 50%;
     }
 
     &__info {
       width: 466px;
 
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      align-content: flex-start;
-
-
       p {
         color: #596078;
         font-size: 18px;
         line-height: 1.63;
-        text-align: left;
       }
 
       &__presentation {
@@ -154,16 +141,13 @@
       }
 
       &__buttons {
+        display: flex;
         height: 56px;
 
-        display: flex;
-
         &__contact {
-
           display: flex;
           align-items: center;
           padding: 16px 28px 16px 32px;
-
           border-radius: 8px;
           background:
             linear-gradient(264deg, #99c2ff 0%, #a399ff 100%);
@@ -174,10 +158,7 @@
           p {
             color: #fff;
             font-weight: 700;
-            text-align: center;
-
             text-shadow: 0px 1px 2px #7E87B0;
-            white-space: nowrap;
           }
           
           &__icon {
@@ -186,19 +167,16 @@
         }
 
         &__cv {
-          align-items: center;
-          background: #edf0fb;
-          border-radius: 8px;
           display: flex;
+          align-items: center;
           margin-left: 28px;
           padding: 16px 28px 16px 32px;
-          border-width: 0px;
+          border-radius: 8px;
+          background: #edf0fb;
 
           p {
             color: #5b678c;
             font-weight: 500;
-            text-align: center;
-            white-space: nowrap
           }
 
           &__icon {
@@ -217,12 +195,11 @@
 
 //#region Skills and education
   .skills-education {
-    overflow: hidden;
     position: relative;
+    display: flex;
     padding: 70px 140px;
     background-color: #E5EDF9;
-    display: flex;
-    flex-direction: row;
+    overflow: hidden;
 
     &__decoration {
       position: absolute;
@@ -275,10 +252,9 @@
     width: 50%;
     &__technologies {
       display: flex;
-      align-content: center;
       flex-wrap: wrap;
-      margin-right: 40px;
       gap: 20px;
+      margin-right: 40px;
       margin-bottom: 40px;
 
       &__technology {
@@ -310,16 +286,15 @@
     padding-top: 10px;
 
     &__content {
-      display: flex;
       position: relative;
+      display: flex;
       align-items: center;
     }
 
     &__line {
-      height: 65%;
-      width: 1;
-      border-right: 1px solid #B9BBC4;
       position: absolute;
+      height: 65%;
+      border-right: 1px solid #B9BBC4;
     }
 
     &__boxes {
@@ -335,20 +310,20 @@
       &__card {
         position: relative;
         width: 544px;
-        background-color: #fff;
+        padding: 30px 40px;
         border-radius: 32px;
+        background-color: #fff;
         box-shadow: inset 16px 16px 32px #EEF0FB, inset -8px -8px 16px rgba(138, 149, 227, 0.33);
         z-index: 2;
-        padding: 30px 40px;
 
         &__info {
           display: flex;
-          margin-bottom: 10px;
           align-items: center;
+          margin-bottom: 10px;
 
           &__date {
-            color: #656978;
             margin-right: 20px;
+            color: #656978;
           }
 
           &__school {
@@ -371,12 +346,12 @@
         }
 
         &__bubble {
+          position: absolute;
           width: 30px;
           height: 30px;
           background: #FFFFFF;
           box-shadow: inset 4px 4px 8px #EEF0FB, inset -4px -4px 8px rgba(138, 149, 227, 0.33);
           border-radius: 32px;
-          position:absolute;
           left: -49px;
           margin: auto;
           top: 0;
@@ -385,24 +360,21 @@
       }
 
       &__shadow {
+        position: relative;
         width: 446px;
         height: 77px;
         background: rgba(161, 171, 234, 0.4);
         filter: blur(25px);
         border-radius: 150px;
-        position: relative;
         top: -65px;
         margin-bottom: -65px;
-        z-index: 1;
       }
     }
   }
 
   .technology {
-    //transform: scale(0.5);
     width: 40px;
     height: 40px;
-    padding: 0;
     margin-right: 12px;
 
     svg {
@@ -414,22 +386,17 @@
 
 //#region Certificate and languages
 .certificate-languages {
-  padding: 90px 140px;
   display: flex;
-  flex-direction: row;
+  padding: 90px 140px;
 }
 
 .certificate {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
   margin-right: 130px;
 }
 
 .opquast {
   &__header {
     display: flex;
-    flex-direction: row;
     align-items: center;
     margin-bottom: 6px;
 
@@ -456,7 +423,6 @@
 
   &__mention {
     display: flex;
-    flex-direction: row;
     align-items: center;
     margin-bottom: 25px;
 
@@ -505,10 +471,10 @@
 
 //#region Courses
 .courses {
-  padding: 10px 140px 100px 140px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 10px 140px 100px 140px;
   background: linear-gradient(0deg, #E5EDF9 0%, rgba(229, 237, 249, 0) 100%);
 
   h3 {
@@ -526,11 +492,11 @@
   }
 
   &__list {
-    width: 100%;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
+    width: 100%;
     margin-bottom: 30px;
     left: -49px;
   }
@@ -585,14 +551,14 @@
 }
 
 .current_course .course__box__shadow {
-    width: 518px;
-    height: 127px;
-    background: rgba(161, 171, 234, 0.4);
-    filter: blur(25px);
-    border-radius: 150px;
-    position: absolute;
-    bottom: -40px;
-    z-index: -1;
+  position: absolute;
+  width: 518px;
+  height: 127px;
+  background: rgba(161, 171, 234, 0.4);
+  filter: blur(25px);
+  border-radius: 150px;
+  bottom: -40px;
+  z-index: -1;
 }
 
 .previous_course, .next_course {
@@ -606,14 +572,14 @@
 }
 
 .previous_course .course__box__shadow, .next_course .course__box__shadow {
-    width: 414px;
-    height: 127px;
-    background: rgba(161, 171, 234, 0.4);
-    filter: blur(25px);
-    border-radius: 150px;
-    position: absolute;
-    bottom: 0px;
-    z-index: -3;
+  position: absolute;
+  width: 414px;
+  height: 127px;
+  bottom: 0px;
+  background: rgba(161, 171, 234, 0.4);
+  filter: blur(25px);
+  border-radius: 150px;
+  z-index: -3;
 }
 
 .previous_course {
@@ -625,12 +591,12 @@
 }
 
 .course__box__side-shadow {
+  position: absolute;
   width: 127px;
   height: 280px;
   background: rgba(105, 108, 133, 0.5);
   filter: blur(15px);
   border-radius: 150px;
-  position: absolute;
   z-index: -1;
 
   &__left {
@@ -649,11 +615,11 @@
 
 //#region Personal project
   .personal-project {
+    display: flex;
+    align-items: center;
     background: linear-gradient(180deg, #E5EDF9 0%, rgba(229, 237, 249, 0) 100%);
     padding: 30px 140px 100px 110px;
     margin-bottom: 100px;
-    display: flex;
-    align-items: center;
 
     &__pictures {
       display: flex;
@@ -664,9 +630,9 @@
       width: 300px;
 
       &__recipes {
-        position: relative;
-        top: 170px;
-        left: -150px;
+      position: relative;
+      top: 170px;
+      left: -150px;
       }
     }
 
@@ -687,14 +653,13 @@
     }
 
     &__info {
+      position: relative;
       display: flex;
       flex-direction: column;
       align-items: center;
-      position: relative;
       margin-bottom: 40px;
 
       &__tabs {
-        display: flex;
         align-self: flex-start;
         margin-left: 20px;
 
@@ -755,6 +720,10 @@
       &__playstore {
         width: 135px;
         margin-right: 20px;
+
+        img {
+          width: 100%;
+        }
       }
     }
   }
@@ -764,7 +733,6 @@
 .contact {
   padding: 100px 288px;
   background-color: #E5EDF9;
-  //display: flex;
 
   h3 {
     width: auto;
@@ -798,13 +766,13 @@
     justify-content: center;
 
     &__card {
+      display: flex;
+      flex-direction: column;
       width: 100%;
       background: linear-gradient(224.2deg, #99C2FF 0%, #A399FF 100%);
       box-shadow: inset 16px 16px 32px rgba(255, 255, 255, 0.38), inset -16px -16px 32px #8A95E3;
       border-radius: 32px;
       padding: 40px 52px;
-      display: flex;
-      flex-direction: column;
 
       &__first-line {
         display: flex;
@@ -849,16 +817,16 @@
       }
 
       &__send {
-        margin-top: 30px;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        margin-top: 30px;
 
         input[type="submit"], .submitSpinner {
-          margin-left: auto;
           display: flex;
           justify-content: center;
           align-items: center;
+          margin-left: auto;
           width: 198px;
           height: 56px;
           background: #FFFFFF;
@@ -882,12 +850,12 @@
     }
 
     &__shadow {
+      position: absolute;
       width: 707px;
       height: 130px;
       background: #909CEA;
       filter: blur(30px);
       border-radius: 150px;
-      position: absolute;
       bottom: -12px;
       z-index: -1;
     }
