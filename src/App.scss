@@ -117,6 +117,10 @@
     display: flex;
     flex-direction: row;
     height: 90vh;
+
+    h1 span {
+      font-weight: 800;
+    }
     
     &__left {
       width: 50%;
@@ -294,7 +298,7 @@
           width: 80px;
           svg {
             height: 80px;
-          width: 80px;
+            width: 80px;
           }
         }
       }
@@ -458,6 +462,10 @@
 
     &__text {
       margin-right: 10px;
+
+      &__grade {
+        font-weight: 600;
+      }
     }
   }
 
@@ -702,7 +710,7 @@
             text-transform: uppercase;
             font-size: 14px;
             font-weight: 500;
-            color: #787C89;
+            color: #596078;
           }
         }
       }
@@ -716,7 +724,7 @@
         p, ul {
           margin-bottom: 0;
           width: auto;
-          color: #596078;
+          color: #333745;
           margin: 30px 50px;
         }
 
@@ -840,19 +848,36 @@
         }
       }
 
-      input[type="submit"] {
-        width: 198px;
-        height: 56px;
-        background: #FFFFFF;
-        box-shadow: 0px 8px 16px -4px rgba(125, 135, 173, 0.5), inset 4px 4px 8px #EEF0FB, inset -4px -4px 8px rgba(138, 149, 227, 0.3);
-        border-radius: 8px;
-        align-self: flex-end;
-        font-family: 'Poppins';
-        color: #4F4F73;
-        font-weight: 700;
-        font-size: 16px;
+      &__send {
         margin-top: 30px;
-        border: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        input[type="submit"], .submitSpinner {
+          margin-left: auto;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 198px;
+          height: 56px;
+          background: #FFFFFF;
+          box-shadow: 0px 8px 16px -4px rgba(125, 135, 173, 0.5), inset 4px 4px 8px #EEF0FB, inset -4px -4px 8px rgba(138, 149, 227, 0.3);
+          border-radius: 8px;
+          font-family: 'Poppins';
+          color: #4F4F73;
+          font-weight: 700;
+          font-size: 16px;
+          border: none;
+        }
+
+        &__error {
+          color: #870000;
+        }
+
+        &__success {
+          color: #004D11;
+        }
       }
     }
 

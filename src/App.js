@@ -1,6 +1,7 @@
 //#region Imports
   import React, { useState } from 'react';
   import { send } from 'emailjs-com';
+  import { TailSpin } from  'react-loader-spinner'
 
   import { BubbleIcon, OpenIcon, CssIcon, FigmaIcon, GitIcon, GraphQLIcon, HtmlIcon, JavaScriptIcon, NodeJsIcon, PostgreSQLIcon, ReactNativeIcon, ReduxIcon, SassIcon, TypeScriptIcon, OclockIcon, SkemaIcon, OpquastIcon, StarIcon, CheckIcon, UsaIcon, GermanyIcon, ChevronLeftIcon, ChevronRightIcon, DownloadAppStoreIcon, PhoneIcon, EmailIcon } from './assets/icons';
   import header_picture from './assets/hero_picture.JPG';
@@ -21,23 +22,28 @@ function App() {
   //#region Arrays
     const technologies = {
       experimented: [
-        {name: 'React Native', icon: <ReactNativeIcon/>},
-        {name: 'React.js', icon: <ReactNativeIcon/>},
-        {name: 'GraphQL', icon: <GraphQLIcon/>},
-        {name: 'CSS', icon: <CssIcon/>},
-        {name: 'PostgreSQL', icon: <PostgreSQLIcon/>},
-        {name: 'TypeScript', icon: <TypeScriptIcon/>},
-        {name: 'JavaScript', icon: <JavaScriptIcon/>},
-        {name: 'Figma', icon: <FigmaIcon/>}
+        {id: 1, name: 'React Native', icon: <ReactNativeIcon alt="React Native icon"/>},
+        {id: 2, name: 'React.js', icon: <ReactNativeIcon alt="React icon"/>},
+        {id: 3, name: 'GraphQL', icon: <GraphQLIcon alt="GraphQL icon"/>},
+        {id: 4, name: 'CSS', icon: <CssIcon alt="CSS icon"/>},
+        {id: 5, name: 'PostgreSQL', icon: <PostgreSQLIcon alt="PostgreSQL icon"/>},
+        {id: 6, name: 'TypeScript', icon: <TypeScriptIcon alt="TypeScript icon"/>},
+        {id: 7, name: 'JavaScript', icon: <JavaScriptIcon alt="JavaScript icon"/>},
+        {id: 8, name: 'Figma', icon: <FigmaIcon alt="Figma icon"/>}
       ],
       familiar: [
-        {name: 'HTML', icon: <HtmlIcon/>},
-        {name: 'Node.js', icon: <NodeJsIcon/>},
-        {name: 'Redux', icon: <ReduxIcon/>},
-        {name: 'Sass', icon: <SassIcon/>},
-        {name: 'Git', icon: <GitIcon/>}
+        {id: 1, name: 'HTML', icon: <HtmlIcon alt="HTML icon"/>},
+        {id: 2, name: 'Node.js', icon: <NodeJsIcon alt="Node.js icon"/>},
+        {id: 3, name: 'Redux', icon: <ReduxIcon alt="Redux icon"/>},
+        {id: 4, name: 'Sass', icon: <SassIcon alt="Sass icon"/>},
+        {id: 5, name: 'Git', icon: <GitIcon alt="Git icon"/>}
       ]
     };
+
+    const technologySectionInfos = [
+      {name: 'Expérimentée', technologies: technologies.experimented},
+      {name: 'Familier', technologies: technologies.familiar}
+    ];
 
     const oclock_technologies = [<HtmlIcon/>, <CssIcon/>, <JavaScriptIcon/>, <NodeJsIcon/>, <PostgreSQLIcon/>, <ReactNativeIcon/>];
 
@@ -160,6 +166,8 @@ function App() {
 
   const [selectedCourseId, setSelectedCourseId] = useState(1);
   const [selectedTabId, setSelectedTabId] = useState(1);
+  const [emailLoading, setEmailLoading] = useState(false);
+  const [emailStatus, setEmailStatus] = useState();
 
   const [toSend, setToSend] = useState({
     from_name: '',
@@ -174,17 +182,23 @@ function App() {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    setEmailLoading(true);
+    setEmailStatus('loading');
     send(
-      'service_8xv9aw2',
-      'template_si36r4n',
+      process.env.REACT_APP_SERVICE_ID,
+      process.env.REACT_APP_TEMPLATE_ID,
       toSend,
-      'G-lOYQ0JadxS0MyQF'
+      process.env.REACT_APP_PUBLIC_KEY
     )
       .then((response) => {
         console.log('SUCCESS!', response.status, response.text);
+        setEmailLoading(false);
+        setEmailStatus('success');
       })
       .catch((err) => {
         console.log('FAILED...', err);
+        setEmailLoading(false);
+        setEmailStatus('error');
       });
   };
 
@@ -194,8 +208,8 @@ function App() {
         //#region Navbar
         <div className="navbar">
           <div className="navbar__logo">
-            <span>NINA </span>
-            <span className="navbar__logo__last-name">PETIT</span>
+            <span>Nina </span>
+            <span className="navbar__logo__last-name">Petit</span>
           </div>
           <nav className="navbar__links">
             <ul>
@@ -215,9 +229,9 @@ function App() {
       {
         //#region Hero section
         <div className="hero-section">
-          <div className="hero-section__left">
+          <section className="hero-section__left">
             <div className="hero-section__info">
-              <h1>Nina <span style={{fontWeight: "800"}}>Petit</span></h1>
+              <h1>Nina <span>Petit</span></h1>
               <h2>Développeuse web et mobile</h2>
               <p className="hero-section__info__presentation">
                 Je suis passionnée par le développement de sites web et
@@ -235,7 +249,7 @@ function App() {
                 </a>
               </div>
             </div>
-          </div>
+          </section>
           <img src={header_picture} alt="Presentation of me" className="hero-section__img" />
         </div>
         //#endregion
@@ -245,33 +259,28 @@ function App() {
           <div className="skills-education">
             {
               //#region Skills
-              <div className="skills" id="skills">
+              <section className="skills" id="skills">
                 <h3>Compétences et Formation</h3>
                 <h4>Technologies</h4>
-                <h5>Expérimentée</h5>
-                <div className="skills__technologies">
-                  {technologies.experimented.map(techno =>
-                    <div className="skills__technologies__technology">
-                      <div>{techno.icon}</div>
-                      <span>{techno.name}</span>
+                {technologySectionInfos.map(section =>
+                  <>
+                    <h5>{section.name}</h5>
+                    <div className="skills__technologies">
+                      {section.technologies.map(techno =>
+                        <div className="skills__technologies__technology" key={techno.id}>
+                          <div>{techno.icon}</div>
+                          <span>{techno.name}</span>
+                        </div>
+                      )}
                     </div>
-                  )}
-                </div>
-                <h5>Familier</h5>
-                <div className="skills__technologies">
-                  {technologies.familiar.map(techno =>
-                    <div className="skills__technologies__technology">
-                      <div>{techno.icon}</div>
-                      <span>{techno.name}</span>
-                    </div>
-                  )}
-                </div>
-              </div>
+                  </>
+                )}
+              </section>
               //#endregion
             }
             {
               //#region Education
-              <div className="education">
+              <section className="education">
                 <h4>Formation</h4>
                 <div className="education__content">
                   <div className="education__line"/>
@@ -307,7 +316,7 @@ function App() {
                     )}
                   </div>
                 </div>
-              </div>
+              </section>
               //#endregion
             }
             {[...Array(6)].map((e, i) => <div className="skills-education__decoration" id={`decoration_${i}`}/>)}
@@ -319,11 +328,11 @@ function App() {
         <div className="certificate-languages">
           {
             //#region Certificate
-            <div className="certificate" id="certificate">
+            <section className="certificate" id="certificate">
               <h3>Certification</h3>
               <a href="https://www.opquast.com/certification/" rel="noopener noreferrer" target="_blank">
                 <div className="opquast__header">
-                  <OpquastIcon className="opquast__header__icon"/>
+                  <OpquastIcon className="opquast__header__icon" alt="Opquast Icon"/>
                   <div>
                     <h6>Maîtrise de la qualité en projet web</h6>
                     <span className="opquast__header__school">Opquast <OpenIcon className="opquast__header__open-icon"/></span>
@@ -331,11 +340,8 @@ function App() {
                 </div>
               </a>
               <div className="opquast__mention">
-                <span className="opquast__mention__text">Mention Avancé <span style={{fontWeight: 600}}>(825/100)</span></span>
-                <StarIcon/>
-                <StarIcon/>
-                <StarIcon/>
-                <StarIcon/>
+                <span className="opquast__mention__text">Mention Avancé <span className="opquast__mention__text__grade">(825/100)</span></span>
+                {[...Array(4)].map((_, i) => <StarIcon key={i}/>)}
               </div>
               {opquast_skills.map(skill =>
                 <div className="opquast__skill">
@@ -343,12 +349,12 @@ function App() {
                   <p>{skill}</p>
                 </div>
               )}
-            </div>
+            </section>
             //#endregion
           }
           {
             //#region Languages
-            <div>
+            <section>
               <h3>Langues</h3>
               {languages.map(language =>
                 <div className="language">
@@ -359,7 +365,7 @@ function App() {
                   </div>
                 </div>
               )}
-            </div>
+            </section>
             //#endregion
           }
         </div>
@@ -367,7 +373,7 @@ function App() {
       }
       {
         //#region Courses
-        <div className="courses" id="courses">
+        <section className="courses" id="courses">
           <h3>Cours suivis</h3>
           <div className="courses__list">
             {courses.map(course => {
@@ -419,7 +425,7 @@ function App() {
               )}
             </ul>
           </div>
-        </div>
+        </section>
         //#endregion
       }
       {
@@ -439,19 +445,19 @@ function App() {
                   className="personal-project__info__tabs__tab" style={{background: selectedTabId === 1 && "linear-gradient(90deg, #D4D8F9 0%, #D5D9F8 100%)"}}
                   onClick={() => setSelectedTabId(1)}
                 >
-                  <span style={{color: selectedTabId === 1 && "#596078"}}>Fonctionnement</span>
+                  <span style={{color: selectedTabId === 1 && "#333745"}}>Fonctionnement</span>
                 </button>
                 <button
                   className="personal-project__info__tabs__tab" style={{background: selectedTabId === 2 && "linear-gradient(90deg, #D5DAF8 0%, #D4DDF8 100%)"}}
                   onClick={() => setSelectedTabId(2)}
                 >
-                  <span style={{color: selectedTabId === 2 && "#596078"}}>Implémentations</span>
+                  <span style={{color: selectedTabId === 2 && "#333745"}}>Implémentations</span>
                 </button>
                 <button
                   className="personal-project__info__tabs__tab" style={{background: selectedTabId === 3 && "linear-gradient(90deg, #D4DDF8 0%, #D4DFF8 100%)"}}
                   onClick={() => setSelectedTabId(3)}
                 >
-                  <span style={{color: selectedTabId === 3 && "#596078"}}>Technologies</span>
+                  <span style={{color: selectedTabId === 3 && "#333745"}}>Technologies</span>
                 </button>
               </div>
               <div className="personal-project__info__box">
@@ -495,6 +501,7 @@ function App() {
               <div className="contact__box__card__first-line">
                 <input
                   type="text"
+                  required
                   name="from_name"
                   placeholder="Nom"
                   value={toSend.from_name}
@@ -503,6 +510,7 @@ function App() {
                 />
                 <input
                   type="email"
+                  required
                   name="reply_to"
                   placeholder="Email"
                   value={toSend.reply_to}
@@ -512,6 +520,7 @@ function App() {
               </div>
               <input
                 type="text"
+                required
                 name="subject"
                 placeholder="Sujet"
                 value={toSend.subject}
@@ -520,13 +529,27 @@ function App() {
               />
               <textarea
                 type="text"
+                required
                 name="message"
                 placeholder="Message"
                 value={toSend.message}
                 onChange={handleChange}
                 className="contact__box__card__input contact__box__card__input__message"
               />
-              <input type="submit" value="Envoyer"/>
+              <div className="contact__box__card__send">
+                {emailStatus === 'error' && <span className="contact__box__card__send__error">Une erreur est survenue. Veuillez réessayer plus tard.</span>}
+                {emailStatus === 'success' && <span className="contact__box__card__send__success">Votre message a bien été envoyé.</span>}
+                {emailStatus !== 'loading' && <input type="submit" value="Envoyer"/>}
+                <TailSpin
+                  height="30"
+                  width="30"
+                  color="#4F4F73"
+                  ariaLabel="tail-spin-loading"
+                  radius="1"
+                  wrapperClass="submitSpinner"
+                  visible={emailStatus === 'loading'}
+                />
+              </div>
             </form>
             <div className="contact__box__shadow"/>
           </div>
