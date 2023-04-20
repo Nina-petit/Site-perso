@@ -24,3 +24,4 @@ export { ReactComponent as ChevronRightIcon} from './chevron_right.svg';
 export { ReactComponent as DownloadAppStoreIcon} from './download_appstore.svg';
 export { ReactComponent as PhoneIcon } from './phone.svg';
 export { ReactComponent as EmailIcon } from './email.svg';
+export { ReactComponent as HamburgerIcon } from './hamburger.svg';

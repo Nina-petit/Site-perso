@@ -1,9 +1,9 @@
 //#region Imports
-  import React, { useState } from 'react';
+  import React, { useState, useEffect } from 'react';
   import { send } from 'emailjs-com';
   import { TailSpin } from  'react-loader-spinner'
 
-  import { BubbleIcon, OpenIcon, CssIcon, FigmaIcon, GitIcon, GraphQLIcon, HtmlIcon, JavaScriptIcon, NodeJsIcon, PostgreSQLIcon, ReactNativeIcon, ReduxIcon, SassIcon, TypeScriptIcon, OclockIcon, SkemaIcon, OpquastIcon, StarIcon, CheckIcon, UsaIcon, GermanyIcon, ChevronLeftIcon, ChevronRightIcon, DownloadAppStoreIcon, PhoneIcon, EmailIcon } from './assets/icons';
+  import { BubbleIcon, OpenIcon, CssIcon, FigmaIcon, GitIcon, GraphQLIcon, HtmlIcon, JavaScriptIcon, NodeJsIcon, PostgreSQLIcon, ReactNativeIcon, ReduxIcon, SassIcon, TypeScriptIcon, OclockIcon, SkemaIcon, OpquastIcon, StarIcon, CheckIcon, UsaIcon, GermanyIcon, ChevronLeftIcon, ChevronRightIcon, DownloadAppStoreIcon, PhoneIcon, EmailIcon, HamburgerIcon } from './assets/icons';
   import header_picture from './assets/hero_picture.JPG';
   import CV from './assets/CV.pdf';
   import ui from './assets/ui.png';
@@ -11,8 +11,8 @@
   import seo from './assets/seo.png';
   import xd from './assets/xd.png';
   import web_design from './assets/web_design.png';
-  import vegetalist_fridge from './assets/vegetalist_fridge.png';
-  import vegetalist_recipes from './assets/vegetalist_recipes.png';
+  import vegetalist from './assets/vegetalist.png';
+  import vegetalist_small from './assets/vegetalist_small.png';
   import download_playstore from './assets/download_playstore.png';
 
   import './App.scss';
@@ -164,10 +164,12 @@ function App() {
     ]
   //#endregion
 
+  //#region States
+  const [width, setWidth] = useState(window.innerWidth);
   const [selectedCourseId, setSelectedCourseId] = useState(1);
   const [selectedTabId, setSelectedTabId] = useState(1);
-  const [emailLoading, setEmailLoading] = useState(false);
   const [emailStatus, setEmailStatus] = useState();
+  const [hamburgerOpen, setHamburgerOpen] = useState(false);
 
   const [toSend, setToSend] = useState({
     from_name: '',
@@ -175,6 +177,12 @@ function App() {
     message: '',
     reply_to: ''
   });
+  //#endregion
+
+  //#region Functions to handle changes
+  const toggleHamburger = () =>{
+    setHamburgerOpen(!hamburgerOpen)
+  };
 
   const handleChange = (e) => {
     setToSend({ ...toSend, [e.target.name]: e.target.value });
@@ -182,7 +190,6 @@ function App() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    setEmailLoading(true);
     setEmailStatus('loading');
     send(
       process.env.REACT_APP_SERVICE_ID,
@@ -192,15 +199,23 @@ function App() {
     )
       .then((response) => {
         console.log('SUCCESS!', response.status, response.text);
-        setEmailLoading(false);
         setEmailStatus('success');
       })
       .catch((err) => {
         console.log('FAILED...', err);
-        setEmailLoading(false);
         setEmailStatus('error');
       });
   };
+  //#endregion
+
+  //#region Window resize width calculation
+  useEffect(() => {
+    const handleWindowResize = () => setWidth(window.innerWidth)
+    window.addEventListener("resize", handleWindowResize);
+
+    return () => window.removeEventListener("resize", handleWindowResize);
+  }, []);
+  //#endregion
 
   return (
     <div className="App">
@@ -211,16 +226,18 @@ function App() {
             <span>Nina </span>
             <span className="navbar__logo__last-name">Petit</span>
           </div>
-          <nav className="navbar__links">
+            <div className={`navbar__hamburger ${hamburgerOpen ? "open" : "close"}`} onClick={toggleHamburger}>
+              <HamburgerIcon className={`navbar__hamburger__icon ${hamburgerOpen ? "open" : "close"}`}/>
+            </div>
+          <nav className={`navbar__links ${hamburgerOpen ? "open" : "close"}`}>
             <ul>
-              <li><a href="#" title="Aller à la section Accueil">Accueil</a></li>
-              <li><a href="#skills" title="Aller à la section Compétences et Formation">Compétences et Formation</a></li>
+              <li><a href="#skills" title="Aller à la section Compétences et Formation">Compétences</a></li>
               <li><a href="#certificate" title="Aller à la section Certification et Langues">Certification et Langues</a></li>
               <li><a href="#courses" title="Aller à la section Cours suivis">Cours suivis</a></li>
               <li><a href="#personal-project" title="Aller à la section Projet personnel">Projet personnel</a></li>
-              <li><a href="#contact" title="Aller à la section Contact" className="navbar__links__contact"><div>
-                <span>Contactez-moi</span>
-              </div></a></li>
+              <li><a href="#contact" title="Aller à la section Contact" className="navbar__links__contact">
+                <div><span>Contactez-moi</span></div>
+              </a></li>
             </ul>
           </nav>
         </div>
@@ -231,7 +248,10 @@ function App() {
         <div className="hero-section">
           <section className="hero-section__left">
             <div className="hero-section__info">
-              <h1>Nina <span>Petit</span></h1>
+              <div className="hero-section__name-img">
+                <h1>Nina <span>Petit</span></h1>
+                <img src={header_picture} alt="Presentation of me" className="hero-section__img__small"/>
+              </div>
               <h2>Développeuse web et mobile</h2>
               <p className="hero-section__info__presentation">
                 Je suis passionnée par le développement de sites web et
@@ -250,7 +270,7 @@ function App() {
               </div>
             </div>
           </section>
-          <img src={header_picture} alt="Presentation of me" className="hero-section__img" />
+          <img src={header_picture} alt="Presentation of me" className="hero-section__img"/>
         </div>
         //#endregion
       }
@@ -356,15 +376,17 @@ function App() {
             //#region Languages
             <section>
               <h3>Langues</h3>
-              {languages.map(language =>
-                <div className="language">
-                  {language.icon}
-                  <div>
-                    <h6>{language.name}</h6>
-                    <span>{language.description}</span>
+              <div className="languages">
+                {languages.map(language =>
+                  <div className="language">
+                    {language.icon}
+                    <div>
+                      <h6>{language.name}</h6>
+                      <span>{language.description}</span>
+                    </div>
                   </div>
-                </div>
-              )}
+                )}
+              </div>
             </section>
             //#endregion
           }
@@ -431,14 +453,20 @@ function App() {
       {
         //#region Personal project
         <div className="personal-project" id="personal-project">
-          <div className="personal_project__pictures">
-            <img className="personal-project__picture personal-project__picture__fridge" src={vegetalist_fridge}/>
-            <img className="personal-project__picture personal-project__picture__recipes" src={vegetalist_recipes}/>
-          </div>
-          <div>
+          {width > 768 && 
+            <div className="personal-project__pictures">
+              <img className="personal-project__picture" src={vegetalist} alt="Screenshots of Vegetalist"/>
+            </div>
+          }
+          <div className="personal-project__presentation">
             <h3>Vegetalist</h3>
             <h4>Application en React Native</h4>
             <p>Création d'une application qui se base sur les ingrédients des utilisateur.ice.s pour trouver des recettes vegan réalisables.</p>
+            {width <= 768 && 
+              <div className="personal-project__pictures">
+                <img className="personal-project__picture" src={vegetalist_small} alt="Screenshots of Vegetalist"/>
+              </div>
+            }
             <div className="personal-project__info">
               <div className="personal-project__info__tabs">
                 <button 
@@ -467,7 +495,7 @@ function App() {
             </div>
             <div className="personal-project__buttons">
               <a className="personal-project__buttons__playstore" href="https://play.google.com/store/apps/details?id=com.vegetalist&hl=fr" without rel="noopener noreferrer" target="_blank">
-                <img src={download_playstore}/>
+                <img src={download_playstore} alt="Logo to download from playstore"/>
               </a>
               <a href="https://apps.apple.com/fr/app/vegetalist-recettes-vegan/id1636482445" without rel="noopener noreferrer" target="_blank">
                 <DownloadAppStoreIcon/>
