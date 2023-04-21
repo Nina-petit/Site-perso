@@ -190,6 +190,7 @@ $large: 1024px;
             color: #fff;
             font-weight: 700;
             text-shadow: 0px 1px 2px #7E87B0;
+            white-space:nowrap;
           }
           
           &__icon {
@@ -208,6 +209,7 @@ $large: 1024px;
           p {
             color: #5b678c;
             font-weight: 500;
+            white-space:nowrap;
           }
 
           &__icon {
@@ -930,163 +932,206 @@ $large: 1024px;
 //#endregion
 
 //#region Responsive
-@media (max-width: $normal) {
-  .navbar {
-    padding: 0 100px 0 100px;
+  //#region Max-width normal
+  @media (max-width: $normal) {
+    .navbar {
+      padding: 0 100px 0 100px;
 
-    &__links {
-      transition: all 0.3s linear;
-      position: fixed;
-      min-height: 100vh;
-      top: 0;
-      right: -220px;
-      margin-top: 0;
-      background-color: #8EA6D8;
-      padding: 50px 25px 0 25px;
-      z-index: 3;
+      &__links {
+        transition: all 0.3s linear;
+        position: fixed;
+        min-height: 100vh;
+        top: 0;
+        right: -220px;
+        margin-top: 0;
+        background-color: #8EA6D8;
+        padding: 50px 25px 0 25px;
+        z-index: 3;
 
-      &.open {
-        right: 0px;
+        &.open {
+          right: 0px;
+        }
+
+        ul {
+          display: inline;
+        }
+
+        li {
+          margin-bottom: 12px;
+        }
+        
+        a {
+          margin-left: 0;
+        }
+      } 
+
+      &__hamburger {
+        display: flex;
       }
-
-      ul {
-        display: inline;
-      }
-
-      li {
-        margin-bottom: 12px;
-      }
-      
-      a {
-        margin-left: 0;
-      }
-    } 
-
-    &__hamburger {
-      display: flex;
     }
-  }
 
-  .hero-section {
-    height: auto;
-    &__left {
+    .hero-section {
+      height: auto;
+      &__left {
+        width: 100%;
+        padding: 70px 100px 50px 100px;
+      }
+
+      &__info {
+        width: auto;
+      }
+
+      &__img {
+        display: none;
+        &__small {
+          display: block;
+        }
+      }
+    }
+
+    .skills-education {
+      flex-direction: column;
+      padding: 70px 100px;
+
+      #decoration_1 {
+        top: 45%;
+      }
+
+      #decoration_2 {
+        top: 96%;
+      }
+
+      #decoration_3 {
+        right: 15%;
+      }
+
+      #decoration_5 {
+        right: -5%;
+      }
+    }
+
+    .skills {
       width: 100%;
-      padding: 70px 100px 50px 100px;
-    }
 
-    &__info {
-      width: auto;
-    }
-
-    &__img {
-      display: none;
-      &__small {
-        display: block;
+      &__technologies {
+        margin-right: 0;
       }
     }
-  }
 
-  .skills-education {
-    flex-direction: column;
-    padding: 70px 100px;
+    .education {
+      width: 100%;
 
-    #decoration_1 {
-      top: 45%;
+      &__box__card {
+        width: 100%;
+      }
+
+      &__line {
+        left: -40px;
+      }
     }
 
-    #decoration_2 {
-      top: 96%;
+    .certificate-languages {
+      flex-direction: column;
+      padding: 90px 100px 40px 100px;
     }
-
-    #decoration_3 {
-      right: 15%;
-    }
-
-    #decoration_5 {
-      right: -5%;
-    }
-  }
-
-  .skills {
-    width: 100%;
-
-    &__technologies {
+    .certificate {
       margin-right: 0;
+      margin-bottom: 40px;
+
+      h3 {
+        margin-bottom: 20px;
+      }
+    }
+
+    .languages {
+      display: flex;
+      column-gap: 20px;
+    }
+
+    .courses {
+      padding: 0 100px 40px 100px;
+    }
+
+    .current_course {
+      width: 70%;
+      &__picture {
+        width: 100%;
+      }
+    }
+
+    .previous_course, .next_course {
+      width: 60%;
+      &__picture {
+        width: 100%;
+      }
+    }
+
+    .personal-project {
+      padding: 30px 100px 40px 100px;
+      &__info__box {
+        width: 100%;
+      }
+
+      &__pictures {
+        width: 100%;
+        margin-bottom: 30px;
+      }
+      &__picture {
+        width: 100%;
+      }
+      &__presentation {
+        width: 100%;
+      }
+    }
+
+    .contact {
+      padding: 60px 10%;
+
+      h3 {
+        margin-bottom: 20px;
+      }
+
+      h4 {
+        font-size: 20px;
+      }
     }
   }
+  //#endregion
 
-  .education {
-    width: 100%;
-
-    &__box__card {
-      width: 100%;
+  //#region Max-width small
+  @media (max-width: $small) {
+    .navbar {
+      padding: 0 80px 0 80px;
     }
 
-    &__line {
-      left: -40px;
+    .hero-section__left {
+      padding: 70px 80px 50px 80px;
     }
-  }
-
-  .certificate-languages {
-    flex-direction: column;
-    padding: 90px 100px 40px 100px;
-  }
-  .certificate {
-    margin-right: 0;
-    margin-bottom: 40px;
-
-    h3 {
-      margin-bottom: 20px;
+    
+    .skills-education {
+      padding: 70px 80px;
     }
-  }
 
-  .languages {
-    display: flex;
-    column-gap: 20px;
-  }
+    .education {
+      &__box__card {
+        width: 90%;
+      }
+      &__line {
+        left: -18px;
+      }
+    }
 
-  .courses {
-    padding: 0 100px 40px 100px;
-  }
+    .certificate-languages {
+      padding: 90px 60px 40px 60px;
+    }
 
-  .current_course {
-    width: 70%;
-    &__picture {
-      width: 100%;
+    .courses {
+      padding: 0 60px 40px 60px;
+    }
+
+    .personal-project {
+      padding: 30px 60px 40px 60px;
     }
   }
-
-  .previous_course, .next_course {
-    width: 60%;
-    &__picture {
-      width: 100%;
-    }
-  }
-
-  .personal-project {
-    padding: 30px 100px 40px 100px;
-    &__pictures {
-      width: 100%;
-      margin-bottom: 30px;
-    }
-    &__picture {
-      width: 100%;
-    }
-    &__presentation {
-      width: 100%;
-    }
-  }
-
-  .contact {
-    padding: 60px 10%;
-
-    h3 {
-      margin-bottom: 20px;
-    }
-
-    h4 {
-      font-size: 20px;
-    }
-  }
-}
+  //#endregion
 //#endregion

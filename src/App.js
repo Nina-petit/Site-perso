@@ -231,11 +231,11 @@ function App() {
             </div>
           <nav className={`navbar__links ${hamburgerOpen ? "open" : "close"}`}>
             <ul>
-              <li><a href="#skills" title="Aller à la section Compétences et Formation">Compétences</a></li>
-              <li><a href="#certificate" title="Aller à la section Certification et Langues">Certification et Langues</a></li>
-              <li><a href="#courses" title="Aller à la section Cours suivis">Cours suivis</a></li>
-              <li><a href="#personal-project" title="Aller à la section Projet personnel">Projet personnel</a></li>
-              <li><a href="#contact" title="Aller à la section Contact" className="navbar__links__contact">
+              <li><a href="#skills" title="Aller à la section Compétences et Formation" onClick={toggleHamburger}>Compétences</a></li>
+              <li><a href="#certificate" title="Aller à la section Certification et Langues" onClick={toggleHamburger}>Certification et Langues</a></li>
+              <li><a href="#courses" title="Aller à la section Cours suivis" onClick={toggleHamburger}>Cours suivis</a></li>
+              <li><a href="#personal-project" title="Aller à la section Projet personnel" onClick={toggleHamburger}>Projet personnel</a></li>
+              <li><a href="#contact" title="Aller à la section Contact" className="navbar__links__contact" onClick={toggleHamburger}>
                 <div><span>Contactez-moi</span></div>
               </a></li>
             </ul>
