@@ -423,7 +423,7 @@ function App() {
               }
             })}
           </div>
-          <div style={{marginBottom: "20px", left: "-49px", position: "relative"}}>
+          <div className="courses__arrows">
             <button
               className="courses__button courses__button__left"
               onClick={() => setSelectedCourseId(selectedCourseId > 1 ? selectedCourseId - 1 : 5)}
@@ -461,7 +461,7 @@ function App() {
           <div className="personal-project__presentation">
             <h3>Vegetalist</h3>
             <h4>Application en React Native</h4>
-            <p>Création d'une application qui se base sur les ingrédients des utilisateur.ice.s pour trouver des recettes vegan réalisables.</p>
+            <p className="personal-project__presentation__text">Création d'une application qui se base sur les ingrédients des utilisateur.ice.s pour trouver des recettes vegan réalisables.</p>
             {width <= 768 && 
               <div className="personal-project__pictures">
                 <img className="personal-project__picture" src={vegetalist_small} alt="Screenshots of Vegetalist"/>
@@ -470,19 +470,19 @@ function App() {
             <div className="personal-project__info">
               <div className="personal-project__info__tabs">
                 <button 
-                  className="personal-project__info__tabs__tab" style={{background: selectedTabId === 1 && "linear-gradient(90deg, #D4D8F9 0%, #D5D9F8 100%)"}}
+                  className="personal-project__info__tabs__tab" id={selectedTabId === 1 && "selected_tab_1"}
                   onClick={() => setSelectedTabId(1)}
                 >
                   <span style={{color: selectedTabId === 1 && "#333745"}}>Fonctionnement</span>
                 </button>
                 <button
-                  className="personal-project__info__tabs__tab" style={{background: selectedTabId === 2 && "linear-gradient(90deg, #D5DAF8 0%, #D4DDF8 100%)"}}
+                  className="personal-project__info__tabs__tab" id={selectedTabId === 2 && "selected_tab_2"}
                   onClick={() => setSelectedTabId(2)}
                 >
                   <span style={{color: selectedTabId === 2 && "#333745"}}>Implémentations</span>
                 </button>
                 <button
-                  className="personal-project__info__tabs__tab" style={{background: selectedTabId === 3 && "linear-gradient(90deg, #D4DDF8 0%, #D4DFF8 100%)"}}
+                  className="personal-project__info__tabs__tab" id={selectedTabId === 3 && "selected_tab_3"}
                   onClick={() => setSelectedTabId(3)}
                 >
                   <span style={{color: selectedTabId === 3 && "#333745"}}>Technologies</span>
@@ -490,8 +490,8 @@ function App() {
               </div>
               <div className="personal-project__info__box">
                 {vegetalistInfo[selectedTabId - 1]}
+                <div className="personal-project__info__shadow"/>
               </div>
-              <div className="personal-project__info__shadow"/>
             </div>
             <div className="personal-project__buttons">
               <a className="personal-project__buttons__playstore" href="https://play.google.com/store/apps/details?id=com.vegetalist&hl=fr" without rel="noopener noreferrer" target="_blank">
