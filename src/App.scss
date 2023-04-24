@@ -12,6 +12,7 @@ $large: 1024px;
 
   h1 {
     font-size: 48px;
+    line-height: 1.2;
     //font-size: 3em;
     margin-bottom: 9px;
     text-transform: uppercase;
@@ -25,6 +26,7 @@ $large: 1024px;
 
   h3 {
     font-size: 48px;
+    line-height: 1.2;
     //font-size: 3em;
     width: 360px;
     font-weight: 700;
@@ -489,10 +491,12 @@ $large: 1024px;
   &__mention {
     display: flex;
     align-items: center;
+    justify-content: flex-start;
     margin-bottom: 25px;
 
     &__text {
       margin-right: 10px;
+      white-space:pre;
 
       &__grade {
         font-weight: 600;
@@ -1104,25 +1108,44 @@ $large: 1024px;
 
     .courses {
       padding: 0 100px 40px 100px;
+
+      &__list {
+        left: 0;
+      }
+
+      &__arrows {
+        left: 0;
+      }
     }
 
     .current_course {
-      width: 70%;
+      width: 80%;
       &__picture {
         width: 100%;
       }
     }
 
     .previous_course, .next_course {
-      width: 60%;
+      width: 70%;
       &__picture {
         width: 100%;
       }
     }
 
+    .previous_course {
+      left: 0;
+    }
+
+    .next_course {
+      right: 0;
+    }
+
     .personal-project {
       padding: 30px 100px 40px 100px;
       &__info__box {
+        width: 100%;
+      }
+      p {
         width: 100%;
       }
 
@@ -1153,6 +1176,11 @@ $large: 1024px;
   }
   //#endregion
 
+  @media (max-width: 700px) {
+    .personal-project {
+      padding: 30px 70px 40px 70px;
+    }
+  }
   //#region Max-width small
   @media (max-width: $small) {
     .navbar {
@@ -1165,6 +1193,10 @@ $large: 1024px;
     
     .skills-education {
       padding: 70px 80px;
+
+      #decoration_1 {
+        left: 70%;
+      }
     }
 
     .education {
@@ -1182,7 +1214,19 @@ $large: 1024px;
 
     .courses {
       padding: 0 60px 40px 60px;
+
+      &__arrows {
+        bottom: 20px;
+        margin-bottom: 0;
+      }
+      .chevron {
+        transform: scale(1.5);
+      }
     }
+
+    .course__picture {
+      border-radius: 20px;
+  }
 
     .personal-project {
       padding: 30px 60px 40px 60px;
@@ -1190,117 +1234,81 @@ $large: 1024px;
   }
   //#endregion
 
-  //#region Max-width smallest
-  @media (max-width: $smallest) {
-    h1 {
-      //font-size: 48px;
-      font-size: 32px;
-      margin-bottom: 9px;
-    }
-  
-    h2 {
-      //font-size: 32px;
-      font-size: 20px;
-      margin-bottom: 20px;
-    }
-  
-    h3 {
-      //font-size: 48px;
-      font-size: 32px;
-      width: 360px;
-      margin-bottom: 30px;
-    }
-  
-    h4 {
-      //font-size: 24px;
-      font-size: 18px;
-      margin-bottom: 20px;
-    }
-  
-    h5 {
-      //font-size: 16px;
-      font-size: 14px;
-      margin-bottom: 10px;
-    }
-  
-    h6 {
-      //font-size: 18px;
-      font-size: 16px;
-      margin-bottom: 5px;
-    }
+  @media (max-width: 620px) {
+    .personal-project__info {
+      flex-direction: row;
+      align-items: stretch;
+      &__tabs {
+        min-width: 20px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        display: flex;
+        flex-direction: column;
+        margin-left: 0;
+        row-gap: 5px;
+        &__tab {
+          padding: 10px 3px 10px 3px;
+          margin-right: 0;
+          border-top-right-radius: 0;
+          border-bottom-left-radius: 8px;
+          span {
+            font-size: 10px;
+            writing-mode: vertical-rl;
+            transform: rotate(-180deg);
+          }
+        } 
+        #selected_tab_1 {
+          background: linear-gradient(0deg, #D5D8F6 0%, #D6D8F5 100%);
+        }
 
-    .navbar {
-      padding: 0 50px 0 50px;
-      &__hamburger {
-        right: 60px;
+        #selected_tab_2 {
+          background: linear-gradient(0deg, #D5D7F7 0%, #D5D8F7 100%);
+        }
+
+        #selected_tab_3 {
+          background: linear-gradient(0deg, #D3D4F5 0%, #D5D7F7 100%);
+        }
       }
     }
 
-    .hero-section__left {
-      padding: 70px 50px 50px 50px;
-    }
+    .contact__box__card__first-line {
+      flex-direction: column;
+      gap: 20px;
 
-    .hero-section__info {
-      &__presentation {
-        margin-bottom: 30px;
+      &__name {
+        margin-right: 0;
+      }
+    }
+  }
+
+  @media (max-width: 585px) {
+    .hero-section__info__buttons {
+      &__contact, &__cv {
+        padding: 10px 22px 10px 22px;
+        svg {
+          margin-left: 10px;
+        }
       }
 
+      &__cv {
+        margin-left: 20px;
+      }
       p {
         font-size: 16px;
-      }
-
-      &__buttons {
-        /* flex-wrap: wrap;
-        row-gap: 10px; */
-        &__contact, &__cv {
-          padding: 10px 18px 10px 18px;
-          svg {
-            margin-left: 6px;
-            transform: scale(0.8);
-          }
-        }
-
-        &__cv {
-          margin-left: 15px;
-        }
-        p {
-          font-size: 14px;
-        }
       }
     }
 
     .skills-education {
       padding: 70px 60px;
 
-      #decoration_1 {
-        left: 70%;
-      }
-
-      #decoration_2 {
-        left: 30%;
-      }
-
       #decoration_3 {
-        top: 8%;
+        top: 11%;
       }
 
       #decoration_5 {
         top: 95%;
       }
-    }
-
-    .skills__technologies__technology {
-      width: 80px;
-
-      div {
-        width: 70px;
-        height: 70px;
-        svg {
-          height: 70px;
-          width: 70px;
-        }
-      }
-    }
+    } 
 
     .education {
       &__line {
@@ -1335,12 +1343,47 @@ $large: 1024px;
           }
 
           &__bubble {
-            left: -37px;
+            left: -11%;
           }
         }
       }
     }
-      
+
+    .languages {
+      gap: 20px;
+      h6 {
+        font-size: 22px;
+      }
+      span {
+        font-size: 14px;
+      }
+      svg {
+        transform: scale(0.8);
+      }
+    }
+
+    .language__icon {
+      margin-right: 18px;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .hero-section__info__buttons {
+      &__contact, &__cv {
+        padding: 10px 18px 10px 18px;
+        svg {
+          margin-left: 6px;
+          transform: scale(0.8);
+        }
+      }
+
+      &__cv {
+        margin-left: 15px;
+      }
+      p {
+        font-size: 14px;
+      }
+    }
 
     .technology {
       width: 30px;
@@ -1351,8 +1394,76 @@ $large: 1024px;
       }
     }
 
-    .certificate-languages {
-      padding: 50px 60px 50px 60px;
+    .languages {
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .personal-project {
+      p, ul {
+        font-size: 16px;
+        margin-bottom: 24px;
+      }
+    }
+
+    .contact__details {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+
+      a {
+        font-size: 14px;
+      }
+      svg {
+        transform: scale(0.8);
+      }
+    }
+  }
+
+  @media (max-width: 450px) {
+    h3 {
+      font-size: 32px;
+      width: 360px;
+      margin-bottom: 30px;
+    }
+
+    h4 {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    h5 {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .navbar {
+      padding: 0 60px 0 60px;
+
+      &__hamburger {
+        right: 60px;
+      }
+    }
+
+    .hero-section__left {
+      padding: 70px 60px 50px 60px;
+    }
+
+    .skills-education #decoration_3 {
+      top: 8%;
+    }
+
+    .skills__technologies__technology {
+      width: 80px;
+
+      div {
+        width: 70px;
+        height: 70px;
+        svg {
+          height: 70px;
+          width: 70px;
+        }
+      }
     }
 
     .opquast {
@@ -1364,6 +1475,109 @@ $large: 1024px;
         &__school {
           font-size: 14px;
         }
+      }
+    }
+
+    .current_course {
+      width: 90%;
+    }
+
+    .previous_course, .next_course {
+      width: 75%;
+    }
+
+
+    .previous_course {
+      left: -6%;
+    }
+
+    .next_course {
+      right: -6%;
+    }
+
+    .contact h4 {
+      font-size: 16px;
+    }
+  }
+
+  //#region Max-width smallest
+  @media (max-width: $smallest) {
+    h1 {
+      //font-size: 48px;
+      font-size: 32px;
+      margin-bottom: 9px;
+    }
+  
+    h2 {
+      //font-size: 32px;
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+  
+    h6 {
+      //font-size: 18px;
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+
+    .navbar {
+      padding: 0 50px 0 50px;
+      &__hamburger {
+        right: 60px;
+      }
+    }
+
+    .hero-section__left {
+      padding: 70px 50px 50px 50px;
+    }
+
+    .hero-section__info {
+      &__presentation {
+        margin-bottom: 30px;
+      }
+
+      p {
+        font-size: 16px;
+      }
+
+      &__buttons {
+        p {
+          font-size: 14px;
+        }
+      }
+    }
+
+    .skills-education {
+      #decoration_2 {
+        left: 30%;
+      }
+
+      #decoration_3 {
+        top: 8%;
+      }
+    }
+
+    .education {
+      &__line {
+        left: -30px;
+      }
+
+      &__boxes {
+        margin-left: 0;
+      }
+
+      &__box__card__bubble {
+        left: -37px;
+      }
+    }
+
+    .certificate-languages {
+      padding: 50px 60px 50px 60px;
+    }
+
+    .opquast {
+      &__header {
+        margin-bottom: 12px;
       }
 
       &__mention {
@@ -1413,36 +1627,10 @@ $large: 1024px;
       li {
         font-size: 16px;
       }
-
-      &__arrows {
-        left: -4%;
-        bottom: 20px;
-        margin-bottom: 0;
-      }
     }
 
     .chevron {
       transform: scale(1.5);
-    }
-
-    .course__picture {
-      border-radius: 20px;
-    }
-
-    .current_course {
-      width: 90%;
-    }
-
-    .previous_course, .next_course {
-      width: 75%;
-    }
-
-    .previous_course {
-      left: -6%;
-    }
-
-    .next_course {
-      left: 31%;
     }
 
     .personal-project {
