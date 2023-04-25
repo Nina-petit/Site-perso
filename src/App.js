@@ -367,7 +367,7 @@ function App() {
                 </div>
               </a>
               <div className="opquast__mention">
-                <span className="opquast__mention__text">Mention Avancé <span className="opquast__mention__text__grade">(825/100)</span></span>
+                <span className="opquast__mention__text">Mention Avancé <span className="opquast__mention__text__grade">(825/1000)</span></span>
                 {[...Array(4)].map((_, i) => <StarIcon key={i}/>)}
               </div>
               {opquast_skills.map(skill =>
