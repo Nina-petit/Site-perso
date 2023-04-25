@@ -453,7 +453,7 @@ function App() {
       {
         //#region Personal project
         <div className="personal-project" id="personal-project">
-          {width > 768 && 
+          {width > 955 && 
             <div className="personal-project__pictures">
               <img className="personal-project__picture" src={vegetalist} alt="Screenshots of Vegetalist"/>
             </div>
@@ -462,7 +462,7 @@ function App() {
             <h3>Vegetalist</h3>
             <h4>Application en React Native</h4>
             <p className="personal-project__presentation__text">Création d'une application qui se base sur les ingrédients des utilisateur.ice.s pour trouver des recettes vegan réalisables.</p>
-            {width <= 768 && 
+            {width <= 955 && 
               <div className="personal-project__pictures">
                 <img className="personal-project__picture" src={vegetalist_small} alt="Screenshots of Vegetalist"/>
               </div>
