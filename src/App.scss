@@ -13,21 +13,18 @@ $large: 1024px;
   h1 {
     font-size: 48px;
     line-height: 1.2;
-    //font-size: 3em;
     margin-bottom: 9px;
     text-transform: uppercase;
   }
 
   h2 {
     font-size: 32px;
-    //font-size: 2em;
     margin-bottom: 29px;
   }
 
   h3 {
     font-size: 48px;
     line-height: 1.2;
-    //font-size: 3em;
     width: 360px;
     font-weight: 700;
     margin-bottom: 40px;
@@ -35,13 +32,11 @@ $large: 1024px;
 
   h4 {
     font-size: 24px;
-    //font-size: 1.5em;
     margin-bottom: 30px;
   }
 
   h5 {
     font-size: 16px;
-    //font-size: 1em;
     text-transform: uppercase;
     text-decoration: underline;
     font-weight: 700;
@@ -50,7 +45,6 @@ $large: 1024px;
 
   h6 {
     font-size: 18px;
-    //font-size: 1.1em;
     margin-bottom: 5px;
   }
 
@@ -172,7 +166,6 @@ $large: 1024px;
       p {
         color: #596078;
         font-size: 18px;
-        //font-size: 1.1em;
         line-height: 1.63;
       }
 
@@ -293,7 +286,7 @@ $large: 1024px;
     }
 
     #decoration_4 {
-      right: 2%;
+      right: 1%;
       top: 25%;
       width: 40px;
       height: 40px;
@@ -327,7 +320,6 @@ $large: 1024px;
 
         span {
           font-size: 14px;
-          //font-size: 0.9em;
           font-weight: 600;
           text-transform: uppercase;
           text-align: center;
@@ -395,14 +387,12 @@ $large: 1024px;
             text-transform: uppercase;
             font-weight: 600;
             font-size: 18px;
-            //font-size: 1.1em;
             margin-right: 10px;
           }
         }
 
         p {
           font-size: 18px;
-          //font-size: 1.1em;
           line-height: 163%;
           margin-bottom: 12px;
         }
@@ -477,13 +467,11 @@ $large: 1024px;
 
     h6 {
       font-size: 20px;
-      //font-size: 1.2em;
       margin-bottom: 2px;
     }
 
     &__school {
       font-size: 18px;
-      //font-size: 1.1em;
       text-transform: uppercase;
       font-weight: 700;
       color: #656978;
@@ -517,7 +505,6 @@ $large: 1024px;
 
     p {
       font-size: 18px;
-      //font-size: 1.1em;
     }
   }
 }
@@ -531,7 +518,6 @@ $large: 1024px;
 .language {
   display: flex;
   align-items: center;
-  //margin-bottom: 30px;
 
   &__icon {
     margin-right: 30px;
@@ -539,12 +525,10 @@ $large: 1024px;
 
   h6 {
     font-size: 28px;
-    //font-size: 1.7em;
   }
 
   span {
     font-size: 18px;
-    //font-size: 1.1em;
   }
 }
 //#endregion
@@ -555,7 +539,7 @@ $large: 1024px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10px 140px 100px 140px;
+  padding: 10px 140px 60px 140px;
   background: linear-gradient(0deg, #E5EDF9 0%, rgba(229, 237, 249, 0) 100%);
 
   h3 {
@@ -564,14 +548,12 @@ $large: 1024px;
   
   h6 {
     font-size: 20px;
-    //font-size: 1.3em;
     font-weight: 600;
     margin-bottom: 15px;
   }
 
   p {
     font-size: 18px;
-    //font-size: 1.1em;
   }
 
   &__list {
@@ -610,7 +592,6 @@ $large: 1024px;
 
   li {
     font-size: 18px;
-    //font-size: 1.1em;
     font-family: "Roboto";
     line-height: 160%;
     font-weight: 400;
@@ -622,7 +603,7 @@ $large: 1024px;
 
   &__arrows {
     margin-bottom: 20px;
-    left: -49px;
+    left: -4%;
     position: relative;
     z-index: 4;
   }
@@ -750,7 +731,6 @@ $large: 1024px;
       width: 496px;
       line-height: 160%;
       font-size: 18px;
-      //font-size: 1.1em;
       margin-bottom: 40px;
     }
 
@@ -780,7 +760,6 @@ $large: 1024px;
             font-family: "Poppins";
             text-transform: uppercase;
             font-size: 14px;
-            //font-size: 1em;
             font-weight: 500;
             color: #596078;
           }
@@ -820,7 +799,6 @@ $large: 1024px;
           font-family: "Roboto";
           line-height: 160%;
           font-size: 18px;
-          //font-size: 1.1em;
         }
       }
 
@@ -922,7 +900,6 @@ $large: 1024px;
         font-family: 'Roboto';
         color: #333745;
         font-size: 16px;
-        //font-size: 1em;
         box-sizing: border-box;
 
         &__message {
@@ -962,7 +939,6 @@ $large: 1024px;
           color: #4F4F73;
           font-weight: 700;
           font-size: 16px;
-          //font-size: 1em;
           border: none;
         }
 
@@ -991,8 +967,54 @@ $large: 1024px;
 //#endregion
 
 //#region Responsive
-  //#region Max-width large
-  @media (max-width: $large) {
+  @media (max-width: 1400px) {
+    .education {
+      &__boxes {
+        margin-left: 55px;
+      }
+      &__box__card {
+        width: 90%;
+
+        &__bubble {
+          left: -49px;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 1200px) {
+    .hero-section {
+      &__left {
+        width: 60%;
+      }
+      &__img {
+        width: 40%;
+      }
+    }
+
+    .skills-education {
+      #decoration_1 {
+        top: 17%;
+      }
+
+      #decoration_4 {
+        top: 33%;
+        right: 1%;
+      }
+    }
+
+    .personal-project {
+      &__pictures {
+        width: 40%;
+      }
+
+      &__picture {
+        width: 80%;
+      }
+    }
+  }
+
+  @media (max-width: 1024px) {
     .navbar {
       padding: 0 100px 0 100px;
 
@@ -1085,8 +1107,16 @@ $large: 1024px;
     .education {
       width: 100%;
 
+      &__boxes {
+        margin-left: 35px;
+      }
+
       &__box__card {
         width: 100%;
+        left: 0;
+        &__bubble {
+          left: -49px;
+        }
       }
 
       &__line {
@@ -1144,7 +1174,6 @@ $large: 1024px;
       }
     }
   }
-  //#endregion
 
   @media (max-width: 955px) {
     .certificate-languages {
@@ -1182,8 +1211,7 @@ $large: 1024px;
     }
   }
 
-  //#region Max-width normal
-  @media (max-width: $normal) {
+  @media (max-width: 768px) {
     .hero-section {
       &__img {
         &__small {
@@ -1261,19 +1289,17 @@ $large: 1024px;
 
       h4 {
         font-size: 20px;
-        //font-size: 1.5em;
       }
     }
   }
-  //#endregion
 
   @media (max-width: 700px) {
     .personal-project {
       padding: 30px 70px 40px 70px;
     }
   }
-  //#region Max-width small
-  @media (max-width: $small) {
+
+  @media (max-width: 640px) {
     .navbar {
       padding: 0 80px 0 80px;
     }
@@ -1323,7 +1349,6 @@ $large: 1024px;
       padding: 30px 60px 40px 60px;
     }
   }
-  //#endregion
 
   @media (max-width: 620px) {
     .personal-project__info {
@@ -1597,22 +1622,18 @@ $large: 1024px;
     }
   }
 
-  //#region Max-width smallest
-  @media (max-width: $smallest) {
+  @media (max-width: 420px) {
     h1 {
-      //font-size: 48px;
       font-size: 32px;
       margin-bottom: 9px;
     }
   
     h2 {
-      //font-size: 32px;
       font-size: 20px;
       margin-bottom: 20px;
     }
   
     h6 {
-      //font-size: 18px;
       font-size: 16px;
       margin-bottom: 5px;
     }
@@ -1850,6 +1871,5 @@ $large: 1024px;
       }
 
     }
-    //#endregion
   }
 //#endregion
