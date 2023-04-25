@@ -25,3 +25,6 @@ export { ReactComponent as DownloadAppStoreIcon} from './download_appstore.svg';
 export { ReactComponent as PhoneIcon } from './phone.svg';
 export { ReactComponent as EmailIcon } from './email.svg';
 export { ReactComponent as HamburgerIcon } from './hamburger.svg';
+export { ReactComponent as GithubIcon } from './github.svg';
+export { ReactComponent as LinkedInIcon } from './linkedin.svg';
+export { ReactComponent as TopIcon } from './top.svg';

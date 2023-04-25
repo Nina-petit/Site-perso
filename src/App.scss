@@ -961,6 +961,75 @@
 }
 //#endregion
 
+//#region Footer
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 140px;
+
+  &__text {
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+  }
+
+  &__info, &__links {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__info {
+    margin-right: auto;
+  }
+
+  &__links {
+    margin-right: 60px;
+    margin-left: 20px;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    font-family: 'Poppins';
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__icon {
+    min-width: 20px;
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+  }
+
+  &__open-icon {
+    margin-left: 2px;
+    path {
+      fill: #333745;
+    }
+    width: 12px;
+    height: 12px;
+  }
+
+  button {
+    min-width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: #A0A8FF;
+    
+    svg {
+      position: relative;
+      top: 2px;
+      transform: scale(1.6);
+    }
+  }
+}
+//#endregion
+
 //#region Responsive
   @media (max-width: 1400px) {
     .education {
@@ -1006,6 +1075,10 @@
       &__picture {
         width: 80%;
       }
+    }
+
+    .footer {
+      padding: 40px 100px;
     }
   }
 
@@ -1168,6 +1241,10 @@
         }
       }
     }
+
+    .footer {
+      padding: 40px 80px;
+    }
   }
 
   @media (max-width: 955px) {
@@ -1202,6 +1279,21 @@
       }
       &__picture {
         width: 100%;
+      }
+    }
+
+    .footer {
+      a {
+        align-items: baseline;
+      }
+
+      &__icon {
+        position: relative;
+        top: 5px;
+      }
+
+      &__links {
+        margin-right: 30px;
       }
     }
   }
@@ -1338,10 +1430,26 @@
 
     .course__picture {
       border-radius: 20px;
-  }
+    }
 
     .personal-project {
       padding: 30px 60px 40px 60px;
+    }
+
+    .footer {
+      align-items: center;
+      padding: 30px 50px;
+      span {
+        font-size: 14px;
+      }
+
+      &__text {
+        flex-direction: column;
+      }
+
+      &__links {
+        margin-left: 0;
+      }
     }
   }
 
@@ -1476,11 +1584,27 @@
     .language__icon {
       margin-right: 18px;
     }
+    
   }
 
   @media (max-width: 550px) {
     .hero-section__img__small {
       top: 60px;
+    }
+
+    .footer {
+      span {
+        font-size: 12px;
+      }
+
+      button {
+        min-width: 30px;
+        height: 30px;
+
+        svg {
+          transform: scale(1);
+        }
+      }
     }
   }
 

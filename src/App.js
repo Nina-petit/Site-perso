@@ -3,7 +3,7 @@
   import { send } from 'emailjs-com';
   import { TailSpin } from  'react-loader-spinner'
 
-  import { BubbleIcon, OpenIcon, CssIcon, FigmaIcon, GitIcon, GraphQLIcon, HtmlIcon, JavaScriptIcon, NodeJsIcon, PostgreSQLIcon, ReactNativeIcon, ReduxIcon, SassIcon, TypeScriptIcon, OclockIcon, SkemaIcon, OpquastIcon, StarIcon, CheckIcon, UsaIcon, GermanyIcon, ChevronLeftIcon, ChevronRightIcon, DownloadAppStoreIcon, PhoneIcon, EmailIcon, HamburgerIcon } from './assets/icons';
+  import { BubbleIcon, OpenIcon, CssIcon, FigmaIcon, GitIcon, GraphQLIcon, HtmlIcon, JavaScriptIcon, NodeJsIcon, PostgreSQLIcon, ReactNativeIcon, ReduxIcon, SassIcon, TypeScriptIcon, OclockIcon, SkemaIcon, OpquastIcon, StarIcon, CheckIcon, UsaIcon, GermanyIcon, ChevronLeftIcon, ChevronRightIcon, DownloadAppStoreIcon, PhoneIcon, EmailIcon, HamburgerIcon, GithubIcon, LinkedInIcon, TopIcon } from './assets/icons';
   import header_picture from './assets/hero_picture.JPG';
   import CV from './assets/CV.pdf';
   import ui from './assets/ui.png';
@@ -206,6 +206,13 @@ function App() {
         setEmailStatus('error');
       });
   };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };  
   //#endregion
 
   //#region Window resize width calculation
@@ -581,6 +588,31 @@ function App() {
             </form>
             <div className="contact__box__shadow"/>
           </div>
+        </div>
+        //#endregion
+      }
+      {
+        //#region Footer
+        <div className="footer">
+          <div className="footer__text">
+            <div className="footer__info">
+              <span>© 2023 Nina Petit</span>
+              <span>Site réalisé avec React et Sass</span>
+            </div>
+            <div className="footer__links">
+              <a href="https://github.com/Nina-petit" title="Lien vers mon profil Github" rel="noopener noreferrer" target="_blank">
+                <GithubIcon className="footer__icon"/>
+                <span>Retrouvez le code de ce site sur mon Github <OpenIcon className="footer__open-icon"/></span>
+              </a>
+              <a href="https://www.linkedin.com/in/nina-petit-80b3b2190/" title="Lien vers mon profil LinkedIn" rel="noopener noreferrer" target="_blank">
+                <LinkedInIcon className="footer__icon"/>
+                <span>Profil LinkedIn <OpenIcon className="footer__open-icon"/></span>
+              </a>
+            </div>
+          </div>
+            <button onClick={scrollToTop} title="Retourner en haut de la page">
+              <TopIcon/>
+            </button>
         </div>
         //#endregion
       }
