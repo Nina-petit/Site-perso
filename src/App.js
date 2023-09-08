@@ -158,7 +158,6 @@ function App() {
         <li>Mise en place d’abonnements in-app</li>
         <li>Inscription/connexion avec email, Facebook, Google et Apple</li>
         <li>SDK Facebook pour promouvoir l’application avec Facebook Ads</li>
-        <li>Ajout de Google Admob pour afficher des publicités dans l’application</li>
       </ul>,
       <p>React Native, TypeScript, Apollo Client, GraphQL, PostgreSQL, Git, utilisation de données extérieures (Open Food Facts)</p>
     ]
