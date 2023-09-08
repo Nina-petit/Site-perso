@@ -26,17 +26,17 @@ function App() {
         {id: 2, name: 'React.js', icon: <ReactNativeIcon alt="React icon"/>},
         {id: 3, name: 'GraphQL', icon: <GraphQLIcon alt="GraphQL icon"/>},
         {id: 4, name: 'CSS', icon: <CssIcon alt="CSS icon"/>},
-        {id: 5, name: 'PostgreSQL', icon: <PostgreSQLIcon alt="PostgreSQL icon"/>},
-        {id: 6, name: 'TypeScript', icon: <TypeScriptIcon alt="TypeScript icon"/>},
+        {id: 5, name: 'Sass', icon: <SassIcon alt="Sass icon"/>},
+        {id: 6, name: 'PostgreSQL', icon: <PostgreSQLIcon alt="PostgreSQL icon"/>},
         {id: 7, name: 'JavaScript', icon: <JavaScriptIcon alt="JavaScript icon"/>},
-        {id: 8, name: 'Figma', icon: <FigmaIcon alt="Figma icon"/>}
+        {id: 8, name: 'TypeScript', icon: <TypeScriptIcon alt="TypeScript icon"/>},
+        {id: 9, name: 'Figma', icon: <FigmaIcon alt="Figma icon"/>}
       ],
       familiar: [
         {id: 1, name: 'HTML', icon: <HtmlIcon alt="HTML icon"/>},
         {id: 2, name: 'Node.js', icon: <NodeJsIcon alt="Node.js icon"/>},
         {id: 3, name: 'Redux', icon: <ReduxIcon alt="Redux icon"/>},
-        {id: 4, name: 'Sass', icon: <SassIcon alt="Sass icon"/>},
-        {id: 5, name: 'Git', icon: <GitIcon alt="Git icon"/>}
+        {id: 4, name: 'Git', icon: <GitIcon alt="Git icon"/>}
       ]
     };
 
