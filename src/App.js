@@ -217,14 +217,13 @@ function App() {
   };  
   //#endregion
 
-  //#region Window resize width calculation
+  //#region useEffects
   useEffect(() => {
     const handleWindowResize = () => setWidth(window.innerWidth)
     window.addEventListener("resize", handleWindowResize);
 
     return () => window.removeEventListener("resize", handleWindowResize);
   }, []);
-  //#endregion
 
   useEffect(() => {
     async function fetchRepos() {
@@ -262,12 +261,12 @@ function App() {
     }
     
     fetchRepos(); // Call the function to execute it
-  }, [])
+  }, []);
+  //#endregion
+
 
   return (
     <div className="App">
-      {//<img src="https://raw.githubusercontent.com/Nina-petit/picky/main/front/src/assets/screenshot.png"/>
-}
       {
         //#region Navbar
         <div className="navbar">
@@ -501,13 +500,17 @@ function App() {
         //#endregion
       }
       <div className="personal-projects" id = "personal-projects">
-        <h3>Portfolio</h3>
+        <h3 style={{marginLeft: '250px'}}>Portfolio</h3>
         {
           //#region Portfolio
           (repos && repos.length > 0) &&
           <div className="portfolio">
-            <h4>Dépôts GitHub</h4>
-            <p style={{marginBottom: '40px'}}>Voici les dépôts GitHub de tous mes projets, à la fois personnels et réalisés en formation. <a style={{textDecoration: 'underline', fontWeight: '700', color: 'rgba(121, 131, 234, 1)'}} href="https://github.com/Nina-petit" rel="noopener noreferrer" target="_blank">Retrouvez mon GitHub ici.</a></p>
+            <div style={{marginLeft: '110px'}}>
+              <h4>Dépôts GitHub</h4>
+              <p style={{marginBottom: '40px'}}>
+                Voici les dépôts GitHub de tous mes projets, à la fois personnels et réalisés en formation. <a style={{textDecoration: 'underline', fontWeight: '700', color: 'rgba(121, 131, 234, 1)'}} href="https://github.com/Nina-petit" rel="noopener noreferrer" target="_blank">Retrouvez mon GitHub ici.</a>
+              </p>
+            </div>
             <div className='portfolio__boxes'>
             {repos.map(repo =>
               <a href={`https://github.com/Nina-petit/${repo.name}#readme`} rel="noopener noreferrer" target="_blank" key={repo.name}>
@@ -526,8 +529,8 @@ function App() {
           //#endregion
         }
         {
-          //#region Personal project
-          <div className="personal-project" id="personal-project">
+          //#region Vegetalist
+          <div className="personal-project">
             {width > 955 && 
               <div className="personal-project__pictures">
                 <img className="personal-project__picture" src={vegetalist} alt="Screenshots of Vegetalist"/>
