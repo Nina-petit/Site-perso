@@ -2,7 +2,6 @@
   import React, { useState, useEffect } from 'react';
   import { send } from 'emailjs-com';
   import { TailSpin } from  'react-loader-spinner';
-  import axios from 'axios';
 
   import { BubbleIcon, OpenIcon, CssIcon, FigmaIcon, GitIcon, GraphQLIcon, HtmlIcon, JavaScriptIcon, NodeJsIcon, PostgreSQLIcon, ReactNativeIcon, ReduxIcon, SassIcon, TypeScriptIcon, OclockIcon, SkemaIcon, OpquastIcon, StarIcon, CheckIcon, UsaIcon, GermanyIcon, ChevronLeftIcon, ChevronRightIcon, DownloadAppStoreIcon, PhoneIcon, EmailIcon, HamburgerIcon, GithubIcon, LinkedInIcon, TopIcon } from './assets/icons';
   import header_picture from './assets/hero_picture.JPG';
@@ -163,7 +162,7 @@ function App() {
       <p>React Native, TypeScript, Apollo Client, GraphQL, PostgreSQL, Git, utilisation de données extérieures (Open Food Facts)</p>
     ]
 
-    const reposNames = ["picky", "auto-systeme", "Formation-GameHub", "Formation-Pokedex", "Formation-DeckBuilder", "Formation-Converter", "Formation-Blog", "Formation-oRecipes", "Formation-GitHubAPI", "Formation-ToDoList", "Formation-oFig"]
+    const reposNames = ["picky", "Site-perso", "auto-systeme", "Formation-GameHub", "Formation-Pokedex", "Formation-DeckBuilder", "Formation-Converter", "Formation-Blog", "Formation-oRecipes", "Formation-GitHubAPI", "Formation-ToDoList", "Formation-oFig"]
   //#endregion
 
   //#region States
@@ -228,30 +227,42 @@ function App() {
   //#endregion
 
   useEffect(() => {
-    const foundRepos = [];
-    reposNames.forEach(repoName => {
-      axios.get(`https://api.github.com/repos/Nina-petit/${repoName}`)
-      .then((response) => {
-        const image = 
-          repoName === 'picky' ? `https://raw.githubusercontent.com/Nina-petit/${repoName}/main/front/src/assets/screenshot.png`
-          : repoName === 'auto-systeme' ? `https://raw.githubusercontent.com/Nina-petit/${repoName}/main/src/assets/screenshot.png`
-          : repoName === 'Formation-GitHubAPI' ? `https://raw.githubusercontent.com/Nina-petit/${repoName}/master/docs/resultat.png`
-          : repoName === 'Formation-Pokedex' ? `https://raw.githubusercontent.com/Nina-petit/${repoName}/master/resultat/home.png`
-          : repoName === 'Formation-Blog' ? `https://raw.githubusercontent.com/Nina-petit/${repoName}/master/docs/off.png`
-          : (repoName === 'Formation-oRecipes' || repoName === 'Formation-ToDoList') ? `https://raw.githubusercontent.com/Nina-petit/${repoName}/master/resultat.png`
-          : repoName === 'Formation-oFig' ? `https://raw.githubusercontent.com/Nina-petit/${repoName}/master/ressources/home.png`
-          : `https://raw.githubusercontent.com/Nina-petit/${repoName}/master/screenshot.png`;
-        const repo = {name: response.data.name, description: response.data.description, topics: response.data.topics, image: image};
-        foundRepos.push(repo)
-      })
-      .catch((error) => console.log(error))
-    })
-    setRepos(foundRepos)
+    async function fetchRepos() {
+      try {
+        const repos = [];
+    
+        for (let repoName of reposNames) {
+          const repoInfo = await fetch(`https://api.github.com/repos/Nina-petit/${repoName}`);
+          const repoData = await repoInfo.json();
+    
+          if (repoData) {
+            const image = 
+            repoName === 'picky' ? `https://raw.githubusercontent.com/Nina-petit/${repoName}/main/front/src/assets/screenshot.png`
+            : (repoName === 'auto-systeme' || repoName === 'Site-perso') ? `https://raw.githubusercontent.com/Nina-petit/${repoName}/main/src/assets/screenshot.png`
+            : repoName === 'Formation-GitHubAPI' ? `https://raw.githubusercontent.com/Nina-petit/${repoName}/master/docs/resultat.png`
+            : repoName === 'Formation-Pokedex' ? `https://raw.githubusercontent.com/Nina-petit/${repoName}/master/resultat/home.png`
+            : repoName === 'Formation-Blog' ? `https://raw.githubusercontent.com/Nina-petit/${repoName}/master/docs/off.png`
+            : (repoName === 'Formation-oRecipes' || repoName === 'Formation-ToDoList') ? `https://raw.githubusercontent.com/Nina-petit/${repoName}/master/resultat.png`
+            : repoName === 'Formation-oFig' ? `https://raw.githubusercontent.com/Nina-petit/${repoName}/master/ressources/home.png`
+            : repoName === 'Formation-Converter' ? `https://raw.githubusercontent.com/Nina-petit/${repoName}/master/resultat.gif`
+            : `https://raw.githubusercontent.com/Nina-petit/${repoName}/master/screenshot.png`;
+            repos.push({
+              name: repoData.name,
+              description: repoData.description,
+              topics: repoData.topics || [], // Assuming topics is an array
+              image: image
+            });
+          }
+        }
+    
+        setRepos(repos)
+      } catch (error) {
+        console.error("Error fetching repos:", error);
+      }
+    }
+    
+    fetchRepos(); // Call the function to execute it
   }, [])
-
-  useEffect(() => {
-    console.log(repos)
-  }, [repos])
 
   return (
     <div className="App">
@@ -272,7 +283,7 @@ function App() {
               <li><a href="#skills" title="Aller à la section Compétences et Formation" onClick={toggleHamburger}>Compétences</a></li>
               <li><a href="#certificate" title="Aller à la section Certification et Langues" onClick={toggleHamburger}>Certification et Langues</a></li>
               <li><a href="#courses" title="Aller à la section Cours suivis" onClick={toggleHamburger}>Cours suivis</a></li>
-              <li><a href="#personal-project" title="Aller à la section Projet personnel" onClick={toggleHamburger}>Projet personnel</a></li>
+              <li><a href="#personal-projects" title="Aller à la section Portfolio" onClick={toggleHamburger}>Portfolio</a></li>
               <li><a href="#contact" title="Aller à la section Contact" className="navbar__links__contact" onClick={toggleHamburger}>
                 <div><span>Contactez-moi</span></div>
               </a></li>
@@ -301,7 +312,7 @@ function App() {
                   <p>Contactez-moi</p>
                   <BubbleIcon className="hero-section__info__buttons__contact__icon"/>
                 </a>
-                <a className="hero-section__info__buttons__cv" href={CV} without rel="noopener noreferrer" target="_blank">
+                <a className="hero-section__info__buttons__cv" href={CV} rel="noopener noreferrer" target="_blank">
                   <p>Ouvrir mon CV</p>
                   <OpenIcon className="hero-section__info__buttons__cv__icon"/>
                 </a>
@@ -321,17 +332,17 @@ function App() {
                 <h3>Compétences et Formation</h3>
                 <h4>Technologies</h4>
                 {technologySectionInfos.map(section =>
-                  <>
+                  <div key={section.name}>
                     <h5>{section.name}</h5>
                     <div className="skills__technologies">
                       {section.technologies.map(techno =>
-                        <div className="skills__technologies__technology" key={techno.id}>
+                        <div className="skills__technologies__technology" key={techno.id.toString()}>
                           <div>{techno.icon}</div>
                           <span>{techno.name}</span>
                         </div>
                       )}
                     </div>
-                  </>
+                  </div>
                 )}
               </section>
               //#endregion
@@ -344,7 +355,7 @@ function App() {
                   <div className="education__line"/>
                   <div className="education__boxes">
                     {education.map(education =>
-                      <div className="education__box">
+                      <div key={education.title} className="education__box">
                         <div className="education__box__card">
                           <h6>{education.title}</h6>
                           <div className="education__box__card__info">
@@ -360,8 +371,8 @@ function App() {
                           <p>{education.description}</p>
                           {education.school === "O'Clock" &&
                             <div className="education__box__card__technologies">
-                              {oclock_technologies.map(techno => 
-                                <div className="technology">
+                              {oclock_technologies.map((techno, i) => 
+                                <div className="technology" key={i}>
                                   {techno}
                                 </div>
                               )}
@@ -377,7 +388,7 @@ function App() {
               </section>
               //#endregion
             }
-            {[...Array(6)].map((e, i) => <div className="skills-education__decoration" id={`decoration_${i}`}/>)}
+            {[...Array(6)].map((e, i) => <div key={i} className="skills-education__decoration" id={`decoration_${i}`}/>)}
           </div>
         //#endregion
       }
@@ -402,7 +413,7 @@ function App() {
                 {[...Array(4)].map((_, i) => <StarIcon key={i}/>)}
               </div>
               {opquast_skills.map(skill =>
-                <div className="opquast__skill">
+                <div className="opquast__skill" key={skill}>
                   <CheckIcon className="opquast__skill__check"/>
                   <p>{skill}</p>
                 </div>
@@ -416,7 +427,7 @@ function App() {
               <h3>Langues</h3>
               <div className="languages">
                 {languages.map(language =>
-                  <div className="language">
+                  <div className="language" key={language.name}>
                     {language.icon}
                     <div>
                       <h6>{language.name}</h6>
@@ -440,7 +451,8 @@ function App() {
               if((selectedCourseId - 1 <= course.id && course.id <= selectedCourseId + 1) || (course.id === 1 && selectedCourseId === 5) ||  (course.id === 5 && selectedCourseId === 1)) {
                 return (
                   <div 
-                  className={"course__box" + (course.id === selectedCourseId ? " current_course" : ((course.id === selectedCourseId + 1) || (selectedCourseId === 5 && course.id === 1)) ? " next_course" : ((course.id === selectedCourseId - 1) || (selectedCourseId === 1 && course.id === 5)) ? " previous_course" : null)}
+                    key={course.id}
+                    className={"course__box" + (course.id === selectedCourseId ? " current_course" : ((course.id === selectedCourseId + 1) || (selectedCourseId === 5 && course.id === 1)) ? " next_course" : ((course.id === selectedCourseId - 1) || (selectedCourseId === 1 && course.id === 5)) ? " previous_course" : null)}
                   >
                     <img
                       src={course.picture}
@@ -457,7 +469,7 @@ function App() {
                   </div>
                 )
               } else {
-                return <></>
+                return <div key={course.id}></div>
               }
             })}
           </div>
@@ -481,93 +493,94 @@ function App() {
             </a>
             <ul>
               {courses[selectedCourseId - 1].skills.map(skill =>
-                <li>{skill}</li>
+                <li key={skill}>{skill}</li>
               )}
             </ul>
           </div>
         </section>
         //#endregion
       }
-      {
-        //#region Personal project
-        <div className="personal-project" id="personal-project">
-          {width > 955 && 
-            <div className="personal-project__pictures">
-              <img className="personal-project__picture" src={vegetalist} alt="Screenshots of Vegetalist"/>
+      <div className="personal-projects" id = "personal-projects">
+        <h3>Portfolio</h3>
+        {
+          //#region Portfolio
+          (repos && repos.length > 0) &&
+          <div className="portfolio">
+            <h4>Dépôts GitHub</h4>
+            <p style={{marginBottom: '40px'}}>Voici les dépôts GitHub de tous mes projets, à la fois personnels et réalisés en formation. <a style={{textDecoration: 'underline', fontWeight: '700', color: 'rgba(121, 131, 234, 1)'}} href="https://github.com/Nina-petit" rel="noopener noreferrer" target="_blank">Retrouvez mon GitHub ici.</a></p>
+            <div className='portfolio__boxes'>
+            {repos.map(repo =>
+              <a href={`https://github.com/Nina-petit/${repo.name}#readme`} rel="noopener noreferrer" target="_blank" key={repo.name}>
+                <div className="portfolio__project">
+                  <h4>{repo.name.charAt(0).toUpperCase() + repo.name.slice(1)}</h4>
+                  {repo.image && <img src={repo.image} alt="Screenshot of the project"/>}
+                  <div className="portfolio__project__tags">
+                    {repo.topics.map(topic => <span className="portfolio__project__tags__tag" key={topic}>{topic}</span>)}
+                  </div>
+                  <p>{repo.description}</p>
+                </div>
+              </a>
+            )}
             </div>
-          }
-          <div className="personal-project__presentation">
-            <h3>Vegetalist</h3>
-            <h4>Application en React Native</h4>
-            <p className="personal-project__presentation__text">Création d'une application qui se base sur les ingrédients des utilisateur.ice.s pour trouver des recettes vegan réalisables.</p>
-            {width <= 955 && 
+          </div>
+          //#endregion
+        }
+        {
+          //#region Personal project
+          <div className="personal-project" id="personal-project">
+            {width > 955 && 
               <div className="personal-project__pictures">
-                <img className="personal-project__picture" src={vegetalist_small} alt="Screenshots of Vegetalist"/>
+                <img className="personal-project__picture" src={vegetalist} alt="Screenshots of Vegetalist"/>
               </div>
             }
-            <div className="personal-project__info">
-              <div className="personal-project__info__tabs">
-                <button 
-                  className="personal-project__info__tabs__tab" id={selectedTabId === 1 && "selected_tab_1"}
-                  onClick={() => setSelectedTabId(1)}
-                >
-                  <span style={{color: selectedTabId === 1 && "#333745"}}>Fonctionnement</span>
-                </button>
-                <button
-                  className="personal-project__info__tabs__tab" id={selectedTabId === 2 && "selected_tab_2"}
-                  onClick={() => setSelectedTabId(2)}
-                >
-                  <span style={{color: selectedTabId === 2 && "#333745"}}>Implémentations</span>
-                </button>
-                <button
-                  className="personal-project__info__tabs__tab" id={selectedTabId === 3 && "selected_tab_3"}
-                  onClick={() => setSelectedTabId(3)}
-                >
-                  <span style={{color: selectedTabId === 3 && "#333745"}}>Technologies</span>
-                </button>
-              </div>
-              <div className="personal-project__info__box">
-                {vegetalistInfo[selectedTabId - 1]}
-                <div className="personal-project__info__shadow"/>
-              </div>
-            </div>
-            <div className="personal-project__buttons">
-              <a className="personal-project__buttons__playstore" href="https://play.google.com/store/apps/details?id=com.vegetalist&hl=fr" without rel="noopener noreferrer" target="_blank">
-                <img src={download_playstore} alt="Logo to download from playstore"/>
-              </a>
-              <a href="https://apps.apple.com/fr/app/vegetalist-recettes-vegan/id1636482445" without rel="noopener noreferrer" target="_blank">
-                <DownloadAppStoreIcon/>
-              </a>
-            </div>
-          </div>
-        </div>
-        //#endregion
-      }
-      {
-        //#region Portfolio
-        repos[0] &&
-        <div className="portfolio">
-          <h3>Portfolio</h3>
-          <h4>erfbd</h4>
-          <div className='portfolio__boxes'>
-          {repos.map(repo =>
-            <div className="portfolio__project">
-              <a href={`https://github.com/Nina-petit/${repo.name}#readme`} without rel="noopener noreferrer" target="_blank">
-              <div className="portfolio__project__card">
-                <h4>{repo.name}</h4>
-                {repo.image && <img src={repo.image} style={{width: '100%', height: 'auto'}}/>}
-                <div className="portfolio__project__card__tags">
-                  {repo.topics.map(topic => <span className="portfolio__project__card__tags__tag">{topic}</span>)}
+            <div className="personal-project__presentation">
+              <h3>Vegetalist</h3>
+              <h4>Application en React Native</h4>
+              <p className="personal-project__presentation__text">Création d'une application qui se base sur les ingrédients des utilisateur.ice.s pour trouver des recettes vegan réalisables.</p>
+              {width <= 955 && 
+                <div className="personal-project__pictures">
+                  <img className="personal-project__picture" src={vegetalist_small} alt="Screenshots of Vegetalist"/>
                 </div>
-                <p style={{alignSelf: 'flex-start', marginTop: 'auto'}}>{repo.description}</p>
+              }
+              <div className="personal-project__info">
+                <div className="personal-project__info__tabs">
+                  <button 
+                    className="personal-project__info__tabs__tab" id={selectedTabId === 1 ? "selected_tab_1" : undefined}
+                    onClick={() => setSelectedTabId(1)}
+                  >
+                    <span style={{color: selectedTabId === 1 && "#333745"}}>Fonctionnement</span>
+                  </button>
+                  <button
+                    className="personal-project__info__tabs__tab" id={selectedTabId === 2 ? "selected_tab_2" : undefined}
+                    onClick={() => setSelectedTabId(2)}
+                  >
+                    <span style={{color: selectedTabId === 2 && "#333745"}}>Implémentations</span>
+                  </button>
+                  <button
+                    className="personal-project__info__tabs__tab" id={selectedTabId === 3 ? "selected_tab_3" : undefined}
+                    onClick={() => setSelectedTabId(3)}
+                  >
+                    <span style={{color: selectedTabId === 3 && "#333745"}}>Technologies</span>
+                  </button>
+                </div>
+                <div className="personal-project__info__box">
+                  {vegetalistInfo[selectedTabId - 1]}
+                  <div className="personal-project__info__shadow"/>
+                </div>
               </div>
-              </a>
+              <div className="personal-project__buttons">
+                <a className="personal-project__buttons__playstore" href="https://play.google.com/store/apps/details?id=com.vegetalist&hl=fr" rel="noopener noreferrer" target="_blank">
+                  <img src={download_playstore} alt="Logo to download from playstore"/>
+                </a>
+                <a href="https://apps.apple.com/fr/app/vegetalist-recettes-vegan/id1636482445" rel="noopener noreferrer" target="_blank">
+                  <DownloadAppStoreIcon/>
+                </a>
+              </div>
             </div>
-          )}
           </div>
-        </div>
-        //#endregion
-      }
+          //#endregion
+        }
+      </div>
       {
         //#region Contact
         <div className="contact" id="contact">
@@ -577,7 +590,7 @@ function App() {
             <a href="tel:+33643119907">
               <div>
                 <PhoneIcon/>
-                <a href="tel:+33643119907">06 43 11 99 07</a>
+                <span>06 43 11 99 07</span>
               </div>
             </a>
             <a href="mailto: nina.petit6@gmail.com">
