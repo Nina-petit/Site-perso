@@ -1,7 +1,8 @@
 //#region Imports
   import React, { useState, useEffect } from 'react';
   import { send } from 'emailjs-com';
-  import { TailSpin } from  'react-loader-spinner'
+  import { TailSpin } from  'react-loader-spinner';
+  import axios from 'axios';
 
   import { BubbleIcon, OpenIcon, CssIcon, FigmaIcon, GitIcon, GraphQLIcon, HtmlIcon, JavaScriptIcon, NodeJsIcon, PostgreSQLIcon, ReactNativeIcon, ReduxIcon, SassIcon, TypeScriptIcon, OclockIcon, SkemaIcon, OpquastIcon, StarIcon, CheckIcon, UsaIcon, GermanyIcon, ChevronLeftIcon, ChevronRightIcon, DownloadAppStoreIcon, PhoneIcon, EmailIcon, HamburgerIcon, GithubIcon, LinkedInIcon, TopIcon } from './assets/icons';
   import header_picture from './assets/hero_picture.JPG';
@@ -161,6 +162,8 @@ function App() {
       </ul>,
       <p>React Native, TypeScript, Apollo Client, GraphQL, PostgreSQL, Git, utilisation de données extérieures (Open Food Facts)</p>
     ]
+
+    const reposNames = ["picky", "auto-systeme", "Formation-GameHub", "Formation-Pokedex", "Formation-DeckBuilder", "Formation-Converter", "Formation-Blog", "Formation-oRecipes", "Formation-GitHubAPI", "Formation-ToDoList", "Formation-oFig"]
   //#endregion
 
   //#region States
@@ -169,6 +172,7 @@ function App() {
   const [selectedTabId, setSelectedTabId] = useState(1);
   const [emailStatus, setEmailStatus] = useState();
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
+  const [repos, setRepos] = useState([]);
 
   const [toSend, setToSend] = useState({
     from_name: '',
@@ -223,8 +227,36 @@ function App() {
   }, []);
   //#endregion
 
+  useEffect(() => {
+    const foundRepos = [];
+    reposNames.forEach(repoName => {
+      axios.get(`https://api.github.com/repos/Nina-petit/${repoName}`)
+      .then((response) => {
+        const image = 
+          repoName === 'picky' ? `https://raw.githubusercontent.com/Nina-petit/${repoName}/main/front/src/assets/screenshot.png`
+          : repoName === 'auto-systeme' ? `https://raw.githubusercontent.com/Nina-petit/${repoName}/main/src/assets/screenshot.png`
+          : repoName === 'Formation-GitHubAPI' ? `https://raw.githubusercontent.com/Nina-petit/${repoName}/master/docs/resultat.png`
+          : repoName === 'Formation-Pokedex' ? `https://raw.githubusercontent.com/Nina-petit/${repoName}/master/resultat/home.png`
+          : repoName === 'Formation-Blog' ? `https://raw.githubusercontent.com/Nina-petit/${repoName}/master/docs/off.png`
+          : (repoName === 'Formation-oRecipes' || repoName === 'Formation-ToDoList') ? `https://raw.githubusercontent.com/Nina-petit/${repoName}/master/resultat.png`
+          : repoName === 'Formation-oFig' ? `https://raw.githubusercontent.com/Nina-petit/${repoName}/master/ressources/home.png`
+          : `https://raw.githubusercontent.com/Nina-petit/${repoName}/master/screenshot.png`;
+        const repo = {name: response.data.name, description: response.data.description, topics: response.data.topics, image: image};
+        foundRepos.push(repo)
+      })
+      .catch((error) => console.log(error))
+    })
+    setRepos(foundRepos)
+  }, [])
+
+  useEffect(() => {
+    console.log(repos)
+  }, [repos])
+
   return (
     <div className="App">
+      {//<img src="https://raw.githubusercontent.com/Nina-petit/picky/main/front/src/assets/screenshot.png"/>
+}
       {
         //#region Navbar
         <div className="navbar">
@@ -262,7 +294,7 @@ function App() {
               <p className="hero-section__info__presentation">
                 Je suis passionnée par le développement de sites web et
                 d’applications mobiles, et je recherche actuellement un emploi en
-                CDI en full remote.
+                CDI.
               </p>
               <div className="hero-section__info__buttons">
                 <a className="hero-section__info__buttons__contact" href="#contact">
@@ -507,6 +539,31 @@ function App() {
                 <DownloadAppStoreIcon/>
               </a>
             </div>
+          </div>
+        </div>
+        //#endregion
+      }
+      {
+        //#region Portfolio
+        repos[0] &&
+        <div className="portfolio">
+          <h3>Portfolio</h3>
+          <h4>erfbd</h4>
+          <div className='portfolio__boxes'>
+          {repos.map(repo =>
+            <div className="portfolio__project">
+              <a href={`https://github.com/Nina-petit/${repo.name}#readme`} without rel="noopener noreferrer" target="_blank">
+              <div className="portfolio__project__card">
+                <h4>{repo.name}</h4>
+                {repo.image && <img src={repo.image} style={{width: '100%', height: 'auto'}}/>}
+                <div className="portfolio__project__card__tags">
+                  {repo.topics.map(topic => <span className="portfolio__project__card__tags__tag">{topic}</span>)}
+                </div>
+                <p style={{alignSelf: 'flex-start', marginTop: 'auto'}}>{repo.description}</p>
+              </div>
+              </a>
+            </div>
+          )}
           </div>
         </div>
         //#endregion
