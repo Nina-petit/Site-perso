@@ -301,7 +301,7 @@ function App() {
                 <h1>Nina <span>Petit</span></h1>
                 <img src={header_picture} alt="Presentation of me" className="hero-section__img__small"/>
               </div>
-              <h2>Développeuse web et mobile</h2>
+              <h2>Développeuse fullstack Javascript</h2>
               <p className="hero-section__info__presentation">
                 Je suis passionnée par le développement de sites web et
                 d’applications mobiles, et je recherche actuellement un emploi en
