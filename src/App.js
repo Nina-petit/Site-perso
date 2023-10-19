@@ -3,7 +3,7 @@
   import { send } from 'emailjs-com';
   import { TailSpin } from  'react-loader-spinner';
 
-  import { BubbleIcon, OpenIcon, CssIcon, FigmaIcon, GitIcon, GraphQLIcon, HtmlIcon, JavaScriptIcon, NodeJsIcon, PostgreSQLIcon, ReactNativeIcon, ReduxIcon, SassIcon, TypeScriptIcon, OclockIcon, SkemaIcon, OpquastIcon, StarIcon, CheckIcon, UsaIcon, GermanyIcon, ChevronLeftIcon, ChevronRightIcon, DownloadAppStoreIcon, PhoneIcon, EmailIcon, HamburgerIcon, GithubIcon, LinkedInIcon, TopIcon } from './assets/icons';
+  import { BubbleIcon, OpenIcon, CssIcon, FigmaIcon, GitIcon, SwiftIcon, GraphQLIcon, HtmlIcon, JavaScriptIcon, NodeJsIcon, PostgreSQLIcon, ReactNativeIcon, ReduxIcon, SassIcon, TypeScriptIcon, OclockIcon, SkemaIcon, OpquastIcon, StarIcon, CheckIcon, UsaIcon, GermanyIcon, ChevronLeftIcon, ChevronRightIcon, DownloadAppStoreIcon, PhoneIcon, EmailIcon, HamburgerIcon, GithubIcon, LinkedInIcon, TopIcon } from './assets/icons';
   import header_picture from './assets/hero_picture.JPG';
   import CV from './assets/CV.pdf';
   import ui from './assets/ui.png';
@@ -36,7 +36,8 @@ function App() {
         {id: 1, name: 'HTML', icon: <HtmlIcon alt="HTML icon"/>},
         {id: 2, name: 'Node.js', icon: <NodeJsIcon alt="Node.js icon"/>},
         {id: 3, name: 'Redux', icon: <ReduxIcon alt="Redux icon"/>},
-        {id: 4, name: 'Git', icon: <GitIcon alt="Git icon"/>}
+        {id: 4, name: 'Git', icon: <GitIcon alt="Git icon"/>},
+        {id: 5, name: 'Swift', icon: <SwiftIcon alt="Swift icon"/>}
       ]
     };
 

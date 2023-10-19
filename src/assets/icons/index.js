@@ -3,6 +3,7 @@ export { ReactComponent as OpenIcon } from './open.svg';
 export { ReactComponent as CssIcon } from './css.svg';
 export { ReactComponent as FigmaIcon } from './figma.svg';
 export { ReactComponent as GitIcon} from './git.svg';
+export { ReactComponent as SwiftIcon} from './swift.svg';
 export { ReactComponent as GraphQLIcon} from './graphql.svg';
 export { ReactComponent as HtmlIcon} from './html.svg';
 export { ReactComponent as JavaScriptIcon} from './javascript.svg';
